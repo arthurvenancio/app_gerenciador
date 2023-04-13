@@ -88,7 +88,26 @@ main{
 
 .scroll_atividades{
     display: flex;
+    flex-direction: column;
     gap: 1em;
+}
+.atividade{
+    border: 2px solid var(--azul-claro);
+    border-radius: var(--curvatura-canto);
+
+    padding: 0.5em;
+
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.atividade h2{
+    font-size: var(--botão);
+}
+
+.atividade_status{
+    display: flex;
+    justify-content: space-between;
 }
 
 
