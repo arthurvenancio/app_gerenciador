@@ -6,9 +6,19 @@
     --azul-escuro:#264296;
     --azul-claro:#54a8cc;
     --branco:#FFFFFF;
+    
     --titulo:24px;
+    --botão:18px;
+    --legenda-icone:12px;
 
+    --altura-header:3rem;
+    --altura-footer:5rem;
+
+    --curvatura-canto:8px;
 }
+
+
+
 body{
     background-color: var(--cinza-escuro);
     color: var(--branco);
@@ -18,32 +28,90 @@ body{
 }
 header{
     background-color: var(--azul-escuro);
-    height: 3rem;
+    height: var(--altura-header);
     width: 100vw;
-
-    font-size: var(--titulo);
 
     display: flex;
     justify-content: space-between;
 
     position: fixed;
     top: 0;
+
+    padding-left: 1em;
+    box-sizing: border-box;
+}
+.titulo_header{
+    font-size: var(--titulo);
+    align-self: center;
+}
+.log_off{
+    background-color: var(--azul-claro);
+
+    min-width: 3em;
+
+    color: var(--branco);
+    font-size: var(--botão);
+    font-weight: bold;
+    text-align: center;
+
+    border: none;
+    border-radius: var(--curvatura-canto) 0 0 var(--curvatura-canto);
 }
 
 main{
     position: fixed;
-    top: 3rem;
-    bottom: 3em;
+    top: var(--altura-header);
+    bottom: var(--altura-footer);
+
+    margin: 0.5em 1.5em;
 }
 
-main div{
-    background-color: red;
+.backlog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+.backlog_numero_atividade{
+    font-size: 32px;
+    padding: 0;
+    margin: 0.5em 0;
+}
+
+.atividades{
+    display: flex;
+    gap: 1em;
+}
+
+
 footer{
     background-color: var(--cinza-claro);
     position: fixed;
     bottom: 0;
 
     width: 100vw;
-    height: 3em;
+    height: var(--altura-footer);
+
+    padding-top: 1em;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 0.25em;
+
+    border-radius: var(--curvatura-canto) var(--curvatura-canto) 0 0;
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--branco);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.legenda-icon-footer{
+    font-size: var(--legenda-icone);
 }
