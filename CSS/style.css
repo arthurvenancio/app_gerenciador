@@ -6,6 +6,7 @@
     --azul-escuro:#264296;
     --azul-claro:#54a8cc;
     --branco:#FFFFFF;
+    --branco-escuro:#c0c1c2;
     --sombra:rgba(0, 0, 0, 0.4);
     
     --titulo:24px;
@@ -72,7 +73,7 @@ header{
     border-radius: var(--curvatura-canto) 0 0 var(--curvatura-canto);
 }
 /* Começo de elementos da main*/
-.main_scroll{
+main{
     position: fixed;
     top: var(--altura-header);
     bottom: var(--altura-footer);
@@ -89,26 +90,33 @@ header{
 .pesquisa{
     display: flex;
     
+    margin-top: 0.75em;
+}
+.central{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-
+}
+.label_input{
     border-radius: var(--curvatura-canto);
     border: 2px solid var(--azul-claro);
     overflow: hidden;
-
-    margin-top: 0.75em;
 }
 .pesquisa_texto{
     width: 70vw;
+}
+.input_texto{
     background-color: var(--cinza-claro);
+
     color: var(--branco);
+    
     border: none;
     padding: 0.5em;
+    
     font-size: 0.95em;
 }
-.pesquisa_texto::placeholder{
-    color: var(--branco);
+.input_texto::placeholder{
+    color: var(--branco-escuro);
     font-style: italic;
 }
 .pesquisa_botao{
@@ -191,4 +199,11 @@ footer a{
 }
 .legenda-icon-footer{
     font-size: var(--legenda-icone);
+    font-family: 'Poppins', sans-serif;
+}
+.adicionar_footer{
+    background-color: var(--cinza-claro);
+    box-shadow: none;
+    border: none;
+    color: var(--branco);
 }
