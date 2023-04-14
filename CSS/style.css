@@ -6,6 +6,7 @@
     --azul-escuro:#264296;
     --azul-claro:#54a8cc;
     --branco:#FFFFFF;
+    --sombra:rgba(0, 0, 0, 0.4);
     
     --titulo:24px;
     --botão:18px;
@@ -13,6 +14,7 @@
 
     --altura-header:3rem;
     --altura-footer:5rem;
+    --distancia-sombra:2px;
 
     --curvatura-canto:8px;
 }
@@ -26,6 +28,7 @@ body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+/* Começo de elementos do header*/
 header{
     background-color: var(--azul-escuro);
     height: var(--altura-header);
@@ -40,9 +43,20 @@ header{
     padding-left: 1em;
     box-sizing: border-box;
 }
+.grupo_titulo_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0em;
+}
 .titulo_header{
     font-size: var(--titulo);
     align-self: center;
+}
+.voltar{
+    color: var(--branco);
+    margin-top: 6px;
+
 }
 .log_off{
     background-color: var(--azul-claro);
@@ -57,8 +71,8 @@ header{
     border: none;
     border-radius: var(--curvatura-canto) 0 0 var(--curvatura-canto);
 }
-
-main{
+/* Começo de elementos da main*/
+.main_scroll{
     position: fixed;
     top: var(--altura-header);
     bottom: var(--altura-footer);
@@ -72,7 +86,38 @@ main{
     
     box-sizing: border-box;
 }
+.pesquisa{
+    display: flex;
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
+    border-radius: var(--curvatura-canto);
+    border: 2px solid var(--azul-claro);
+    overflow: hidden;
+
+    margin-top: 0.75em;
+}
+.pesquisa_texto{
+    width: 70vw;
+    background-color: var(--cinza-claro);
+    color: var(--branco);
+    border: none;
+    padding: 0.5em;
+    font-size: 0.95em;
+}
+.pesquisa_texto::placeholder{
+    color: var(--branco);
+    font-style: italic;
+}
+.pesquisa_botao{
+    background-color: var(--azul-claro);
+    color: var(--branco);
+    border: none;
+
+    box-shadow: -2px 0 -4px var(--sombra);
+}
 .backlog{
     display: flex;
     flex-direction: column;
@@ -93,6 +138,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 1em;
+    margin: 0 1.5em ;
 }
 .atividade{
     border: 2px solid var(--azul-claro);
@@ -113,7 +159,7 @@ main{
     justify-content: space-between;
 }
 
-
+/* Começo de elementos do footer*/
 footer{
     background-color: var(--cinza-claro);
     position: fixed;

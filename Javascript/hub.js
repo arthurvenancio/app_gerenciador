@@ -11,7 +11,6 @@ function Atividade(titulo,equipamento,tempo_estimado){
     this.atraso=()=>{
         if(this.duracao_real>this.tempo_estimado){
             this.status="Atrasado"
-            console.log('teste atraso')
         }
     }
     this.iniciado=()=>{
