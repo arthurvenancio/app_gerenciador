@@ -92,6 +92,11 @@ main{
     
     margin-top: 0.75em;
 }
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
 .central{
     position: absolute;
     left: 50%;
@@ -104,13 +109,16 @@ main{
 }
 .pesquisa_texto{
     width: 70vw;
+    border: none;
+}
+.cadastro_texto{
+    width: 100%;
 }
 .input_texto{
     background-color: var(--cinza-claro);
 
     color: var(--branco);
     
-    border: none;
     padding: 0.5em;
     
     font-size: 0.95em;
