@@ -225,6 +225,8 @@ footer a{
 }
 .login_botoes{
     padding: 1em;
+
+    margin-top: 1em;
     
     border-radius: var(--curvatura-canto);
     
@@ -242,4 +244,8 @@ footer a{
 .login_cadastro{
     background-color: transparent;
     border: 2px solid var(--azul-claro);
+}
+.novo_usuario_botao{
+    width: 80vw;
+    font-size: var(--botão);
 }
