@@ -73,6 +73,10 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         cadastro.classList.add( 'login_entrar')
         cadastro.classList.add('novo_usuario_botao')
 
+        cadastro.addEventListener('click',()=>{
+            window.location.href='/HTML/hub.html'
+        })
+
     }
     //Iniciando a área de Produção
     if(atividade.value==='producao'){
@@ -124,6 +128,10 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         cadastro.classList.add("login_botoes")
         cadastro.classList.add( 'login_entrar')
         cadastro.classList.add('novo_usuario_botao')
+
+        cadastro.addEventListener('click',()=>{
+            window.location.href='/HTML/hub.html'
+        })
     }
 })
 )
