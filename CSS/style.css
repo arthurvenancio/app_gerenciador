@@ -87,6 +87,10 @@ main{
     
     box-sizing: border-box;
 }
+.sem_footer{
+    bottom: 0;
+    height: calc(100vh - var(--altura-header));
+}
 .pesquisa{
     display: flex;
     
@@ -226,7 +230,7 @@ footer a{
 .login_botoes{
     padding: 1em;
 
-    margin-top: 1em;
+    margin: 1em 0;
     
     border-radius: var(--curvatura-canto);
     

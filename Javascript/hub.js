@@ -48,14 +48,14 @@ function adicionar_atividade(atividade){
 }
 
 let lista_atividades=[]
-
+/*
 document.querySelector('#nova_atividade').addEventListener('click',()=>{
     let atividade = new Atividade("Atividade Teste","Equipamento 1",1)
     lista_atividades.push(atividade)
     adicionar_atividade(atividade)
     }
 )
-
+*/
 function atualizar_tempo(lista){
     let elementos_duracao=document.querySelectorAll('.duracao_atividade')
     let elementos_status=document.querySelectorAll('.status_atual')
