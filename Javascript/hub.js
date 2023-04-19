@@ -1,20 +1,34 @@
-function Atividade(titulo,equipamento,tempo_estimado){
-    this.titulo=String(titulo);
-    this.equipamento=String(equipamento);
-    this.tempo_estimado=parseInt(tempo_estimado);
-    
-    this.duracao=0;
-    this.duracao_real=0;
-    this.status="Planejado";
-    this.criacao=Date.now();
-
-    this.atraso=()=>{
+class Atividade{
+    constructor(tempo_estimado){
+        this.tempo_estimado=parseInt(tempo_estimado);
+        
+        this.duracao=0;
+        this.duracao_real=0;
+        this.status="Planejado";
+        this.criacao=Date.now();
+    }
+    atraso(){
         if(this.duracao_real>this.tempo_estimado){
             this.status="Atrasado"
         }
-    }
-    this.iniciado=()=>{
+    }   
+    iniciado(){
         this.status="Em andamento"
+    } 
+}
+
+class Manutenção extends Atividade{
+    constructor(tempo_estimado,equipamento,componente,descricao){
+        super(tempo_estimado)
+        this.titulo=`Manutenção - ${equipamento} | ${componente}`
+        this.descricao=String(descricao)
+    }
+}
+class Produção extends Atividade{
+    constructor(tempo_estimado,produto,quantidade){
+        super(tempo_estimado)
+        this.titulo=`Produção - ${produto}`
+        this.quantidade=String(quantidade)
     }
 }
 
@@ -26,7 +40,7 @@ function adicionar_atividade(atividade){
     document.querySelector('.scroll_atividades').appendChild(elemento)
     //Criando o título
     let titulo=document.createElement('h2')
-    titulo.innerHTML=`${atividade.titulo} | ${atividade.equipamento}`
+    titulo.innerHTML=atividade.titulo
     //Adicionando titulo ao elemento
     elemento.appendChild(titulo)
     //Criando area do status da atividade
@@ -48,14 +62,18 @@ function adicionar_atividade(atividade){
 }
 
 let lista_atividades=[]
-/*
-document.querySelector('#nova_atividade').addEventListener('click',()=>{
-    let atividade = new Atividade("Atividade Teste","Equipamento 1",1)
-    lista_atividades.push(atividade)
-    adicionar_atividade(atividade)
-    }
-)
-*/
+const manutencao=new Manutenção(60,'Equipamento 1','Componente 10','Está manutenção é um teste')
+const producao=new Produção(60,'Produto Teste',1)
+lista_atividades.push(manutencao,producao)
+
+
+
+window.addEventListener('load',()=>{
+    lista_atividades.forEach((atividade)=>{
+        adicionar_atividade(atividade)
+    })
+})
+
 function atualizar_tempo(lista){
     let elementos_duracao=document.querySelectorAll('.duracao_atividade')
     let elementos_status=document.querySelectorAll('.status_atual')
@@ -85,3 +103,4 @@ function atualizar_tempo(lista){
 
 setInterval(()=>{
     atualizar_tempo(lista_atividades)},1000)
+    
