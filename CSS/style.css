@@ -88,7 +88,6 @@ main{
     box-sizing: border-box;
 }
 .sem_footer{
-    bottom: 0;
     height: calc(100vh - var(--altura-header));
 }
 .pesquisa{
@@ -113,23 +112,18 @@ main{
 }
 .pesquisa_texto{
     width: 70vw;
+
     border: none;
-}
-.cadastro_texto{
-    width: 100%;
-}
-.input_texto{
+
     background-color: var(--cinza-claro);
 
-    color: var(--branco);
-    
-    padding: 0.5em;
-    
     font-size: 0.95em;
+    padding: 0.5em;
 }
-.input_texto::placeholder{
+.pesquisa_texto::placeholder{
     color: var(--branco-escuro);
     font-style: italic;
+    
 }
 .pesquisa_botao{
     background-color: var(--azul-claro);
@@ -252,4 +246,29 @@ footer a{
 .novo_usuario_botao{
     width: 80vw;
     font-size: var(--botão);
+}
+
+.input_cadastro{
+    padding: 0.5em;
+
+    border-radius: var(--curvatura-canto);
+
+    margin: 1em;
+    margin-left: 0;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: var(--branco);
+    font-size: 0.95em;
+
+    background-color: var(--cinza-claro);
+
+    border: 2px solid var(--azul-claro);
+
+    width: 80vw;
+}
+
+.input_cadastro::placeholder{
+    color: var(--branco-escuro);
+    font-style: italic;
 }

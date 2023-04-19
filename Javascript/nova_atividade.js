@@ -11,6 +11,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         const dropdown_equipamentos=document.createElement('select')
         const placeholder_equipamentos=document.createElement('option')
 
+        dropdown_equipamentos.classList.add('input_cadastro')
+
         area_especifica.appendChild(dropdown_equipamentos)
         dropdown_equipamentos.appendChild(placeholder_equipamentos)
 
@@ -24,6 +26,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         // Dropdown de componentes
         const dropdown_componente=document.createElement('select')
         const placeholder_componente=document.createElement('option')
+
+        dropdown_componente.classList.add('input_cadastro')
 
         area_especifica.appendChild(dropdown_componente)
         dropdown_componente.appendChild(placeholder_componente)
@@ -41,6 +45,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         const tempo_titulo=document.createElement('h3')
         const tempo_input=document.createElement('input')
 
+        tempo_input.classList.add('input_cadastro')
+
         area_especifica.appendChild(tempo)
         tempo.appendChild(tempo_titulo)
         tempo.appendChild(tempo_input)
@@ -52,6 +58,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         const descricao=document.createElement('label')
         const descricao_titulo=document.createElement('h3')
         const descricao_area=document.createElement('textarea')
+
+        descricao_area.classList.add('input_cadastro')
 
         area_especifica.appendChild(descricao)
         descricao.appendChild(descricao_titulo)
@@ -84,6 +92,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         const placeholder_produto=document.createElement('option')
         const novo_produto=document.createElement('option')
 
+        dropdown_produto.classList.add('input_cadastro')
+
         area_especifica.appendChild(dropdown_produto)
         dropdown_produto.appendChild(placeholder_produto)
         dropdown_produto.appendChild(novo_produto)
@@ -109,6 +119,8 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
         const quantidade=document.createElement('label')
         const quantidade_titulo=document.createElement('h3')
         const quantidade_input=document.createElement('input')
+
+        quantidade_input.classList.add('input_cadastro')
 
         area_especifica.appendChild(quantidade)
         quantidade.appendChild(quantidade_titulo)
