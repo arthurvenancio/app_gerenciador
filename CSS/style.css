@@ -8,6 +8,8 @@
     --branco:#FFFFFF;
     --branco-escuro:#c0c1c2;
     --vermelho:#ed1a1a;
+    --amarelo:#FFCB27;
+
     --sombra:rgba(0, 0, 0, 0.4);
     
     --titulo:24px;
@@ -120,11 +122,19 @@ main{
 
     font-size: 0.95em;
     padding: 0.5em;
+
+    color: var(--branco);
+
+    transition: padding 300ms;
 }
 .pesquisa_texto::placeholder{
     color: var(--branco-escuro);
     font-style: italic;
     
+}
+.pesquisa_texto:focus{
+    font-size: 1.5em;
+    padding: 0.6em;
 }
 .pesquisa_botao{
     background-color: var(--azul-claro);
