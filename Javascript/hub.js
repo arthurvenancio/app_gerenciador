@@ -1,36 +1,4 @@
-class Atividade{
-    constructor(tempo_estimado){
-        this.tempo_estimado=parseInt(tempo_estimado);
-        
-        this.duracao=0;
-        this.duracao_real=0;
-        this.status="Planejado";
-        this.criacao=Date.now();
-    }
-    atraso(){
-        if(this.duracao_real>this.tempo_estimado){
-            this.status="Atrasado"
-        }
-    }   
-    iniciado(){
-        this.status="Em andamento"
-    } 
-}
-
-class Manutenção extends Atividade{
-    constructor(tempo_estimado,equipamento,componente,descricao){
-        super(tempo_estimado)
-        this.titulo=`Manutenção - ${equipamento} | ${componente}`
-        this.descricao=String(descricao)
-    }
-}
-class Produção extends Atividade{
-    constructor(tempo_estimado,produto,quantidade){
-        super(tempo_estimado)
-        this.titulo=`Produção - ${produto}`
-        this.quantidade=String(quantidade)
-    }
-}
+import { classes } from './classes.js'
 
 function adicionar_atividade(atividade){
     //Criando o elemento mais externo
@@ -62,9 +30,9 @@ function adicionar_atividade(atividade){
 }
 
 let lista_atividades=[]
-const manutencao=new Manutenção(60,'Equipamento 1','Componente 10','Está manutenção é um teste')
-const producao=new Produção(60,'Produto Teste',1)
-lista_atividades.push(manutencao,producao)
+const manutencaoInst=new classes.manutencao(60,'Equipamento 1','Componente 10','Está manutenção é um teste')
+const producaoInst=new classes.producao(60,'Produto Teste',1)
+lista_atividades.push(manutencaoInst,producaoInst)
 
 
 
