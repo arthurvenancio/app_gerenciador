@@ -9,11 +9,12 @@ class Atividade{
     }
     atraso(){
         if(this.duracao_real>this.tempo_estimado){
-            this.status="Atrasado"
+            this.status="Atrasado";
         }
     }   
     iniciado(){
-        this.status="Em andamento"
+        this.status="Em andamento";
+        this.inicio_tarefa=Date.now();
     } 
 }
 

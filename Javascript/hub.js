@@ -9,31 +9,36 @@ function adicionar_atividade(atividade){
     div_elemento.style.borderRadius='var(--curvatura-canto)'
     div_elemento.style.justifyContent='space-between'
     div_elemento.style.overflow='hidden'
+    //Adicionando data-attribute
+    div_elemento.setAttribute('data-tipo','atividade_scroll')
     
     //Criando o elemento linkado a atividade
     const elemento=document.createElement('a')
     elemento.classList.add('atividade')
     //Anexando link a div
     div_elemento.appendChild(elemento)
-    /*
-    //Criando botão de excluir atividade 
-    const excluir=document.createElement('button')
+  
+    //Criando botão de atividade 
+    const botao=document.createElement('button')
     //Anexando botao a div
-    div_elemento.appendChild(excluir)
+    div_elemento.appendChild(botao)
     //Adicionando Classe ao botão
-    excluir.classList.add('atividade_excluir')
+    botao.classList.add('atividade_botao')
+    
     //Criando span para icone do botao
-    const excluir_icone=document.createElement('span')
+    const botao_icone=document.createElement('span')
     //Adcionando classe ao icone
-    excluir_icone.classList.add('material-symbols-outlined')
+    botao_icone.classList.add('material-symbols-outlined')
+    //Adicionando data attribute no icone
+    botao_icone.setAttribute('data-tipo','icone_botao_scroll')
     //Adicionando valor ao icone
-    excluir_icone.innerHTML='close'
+    botao_icone.innerHTML='play_circle'
     //estilizando icone
-    excluir_icone.style.color='var(--branco)'
-    excluir_icone.style.fontSize='2em'
+    botao_icone.style.color='var(--branco)'
+    botao_icone.style.fontSize='2em'
     //Anexando icone ao botao
-    excluir.appendChild(excluir_icone)
-    */
+    botao.appendChild(botao_icone)
+    
     
     //Anexando o div da atividade a lista de atividades
     document.querySelector('.scroll_atividades').appendChild(div_elemento)
@@ -73,10 +78,30 @@ lista_atividades.push(manutencaoInst,producaoInst)
 let tempo_backlog=0
 
 window.addEventListener('load',()=>{
-    lista_atividades.forEach((atividade)=>{
+    lista_atividades.forEach((atividade,index)=>{
+        //adicionando atividade ao scroll
         adicionar_atividade(atividade)
+        //somando backlog
         tempo_backlog+=(atividade.tempo_estimado)/(60*60)
+
+        //adicionando função de inicialização ao botão
+        const botao=document.querySelectorAll('.atividade_botao')[index]
+        const icone=document.querySelectorAll('[data-tipo="icone_botao_scroll"]')[index]
+        botao.addEventListener('click',()=>{
+            if(atividade.status==='Planejado'){
+                atividade.iniciado()
+                botao.style.backgroundColor='var(--vermelho)'
+                icone.innerHTML='close'
+            } else if(atividade.status==="Em andamento"){
+                document.querySelectorAll('[data-tipo="atividade_scroll"]')[index].remove()
+                console.log(index)
+                lista_atividades.splice(index,1)
+                console.log(index)      
+            }
+        })
     })
+    
+    //Escrita do backlog na tela
     const backlog=document.querySelector(".backlog_horas")
     if(tempo_backlog.toFixed(2)>1){
         backlog.innerHTML=`${tempo_backlog.toFixed(2)} h`
@@ -89,33 +114,33 @@ window.addEventListener('load',()=>{
     }
 })
 
-
-
-
-
 function atualizar_tempo(lista){
+    //Tempo decorrido de atividade
     let elementos_duracao=document.querySelectorAll('.duracao_atividade')
+    //Status Atual de Atividade
     let elementos_status=document.querySelectorAll('.status_atual')
     for(let atividade of lista){
-        let duracao=Math.floor((Date.now()-atividade.criacao)/1000)
-        if(duracao<60){
-            atividade.duracao=`${duracao}s`
-        }
-        else if(duracao>=60 && duracao<(60*60)){
-            let minutos=Math.floor(duracao/60)
-            let segundos=duracao%60
-            atividade.duracao=`${minutos}min${segundos}s`
-        }
-        else if(duracao>=(60*60)){
-            let horas=Math.floor(duracao/(60*60))
-            minutos=Math.floor(duracao%(60*60))
-            atividade.duracao=`${horas}h${minutos}min`
-        }
-        atividade.duracao_real=duracao
-        atividade.atraso()
+        if(atividade.status==="Em andamento"){
+            let duracao=Math.floor((Date.now()-atividade.inicio_tarefa)/1000)
+            if(duracao<60){
+                atividade.duracao=`${duracao}s`
+            }
+            else if(duracao>=60 && duracao<(60*60)){
+                let minutos=Math.floor(duracao/60)
+                let segundos=duracao%60
+                atividade.duracao=`${minutos}min${segundos}s`
+            }
+            else if(duracao>=(60*60)){
+                let horas=Math.floor(duracao/(60*60))
+                minutos=Math.floor(duracao%(60*60))
+                atividade.duracao=`${horas}h${minutos}min`
+            }
+            atividade.duracao_real=duracao
+            atividade.atraso()
 
-        elementos_duracao[lista.indexOf(atividade)].innerHTML=atividade.duracao
-        elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
+            elementos_duracao[lista.indexOf(atividade)].innerHTML=atividade.duracao
+            elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
+        }
         
     }
 }

@@ -155,9 +155,9 @@ main{
     gap: 1em;
     margin: 0 1.5em ;
 }
-.atividade_excluir{
+.atividade_botao{
     padding: 0 1em;
-    background-color: var(--vermelho);
+    background-color: var(--azul-claro);
     border: none;
 }
 .atividade{
