@@ -7,6 +7,7 @@
     --azul-claro:#54a8cc;
     --branco:#FFFFFF;
     --branco-escuro:#c0c1c2;
+    --vermelho:#ed1a1a;
     --sombra:rgba(0, 0, 0, 0.4);
     
     --titulo:24px;
@@ -154,14 +155,18 @@ main{
     gap: 1em;
     margin: 0 1.5em ;
 }
+.atividade_excluir{
+    padding: 0 1em;
+    background-color: var(--vermelho);
+    border: none;
+}
 .atividade{
-    border: 2px solid var(--azul-claro);
-    border-radius: var(--curvatura-canto);
-
     padding: 0.5em;
 
     text-decoration: none;
     color: var(--branco);
+
+    width: 100%;
 }
 
 .atividade h2{
