@@ -6,6 +6,7 @@ class Atividade{
         this.duracao_real=0;
         this.status="Planejado";
         this.criacao=Date.now();
+        this.id=this.criacao+""+Math.random()
     }
     atraso(){
         if(this.duracao_real>this.tempo_estimado){
@@ -15,6 +16,10 @@ class Atividade{
     iniciado(){
         this.status="Em andamento";
         this.inicio_tarefa=Date.now();
+    }
+    finalizado(){
+        this.status='Finalizado'
+        this.final_tarefa=Date.now();
     } 
 }
 

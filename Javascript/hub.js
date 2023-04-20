@@ -11,6 +11,8 @@ function adicionar_atividade(atividade){
     div_elemento.style.overflow='hidden'
     //Adicionando data-attribute
     div_elemento.setAttribute('data-tipo','atividade_scroll')
+    div_elemento.setAttribute('data-status',`${atividade.status}`)
+    div_elemento.setAttribute('data-id',`${atividade.id}`)
     
     //Criando o elemento linkado a atividade
     const elemento=document.createElement('a')
@@ -78,27 +80,35 @@ lista_atividades.push(manutencaoInst,producaoInst)
 let tempo_backlog=0
 
 window.addEventListener('load',()=>{
-    lista_atividades.forEach((atividade,index)=>{
+    lista_atividades.forEach((atividade)=>{
         //adicionando atividade ao scroll
         adicionar_atividade(atividade)
         //somando backlog
         tempo_backlog+=(atividade.tempo_estimado)/(60*60)
 
-        //adicionando função de inicialização ao botão
-        const botao=document.querySelectorAll('.atividade_botao')[index]
-        const icone=document.querySelectorAll('[data-tipo="icone_botao_scroll"]')[index]
-        botao.addEventListener('click',()=>{
-            if(atividade.status==='Planejado'){
-                atividade.iniciado()
-                botao.style.backgroundColor='var(--vermelho)'
-                icone.innerHTML='close'
-            } else if(atividade.status==="Em andamento"){
-                document.querySelectorAll('[data-tipo="atividade_scroll"]')[index].remove()
-                console.log(index)
-                lista_atividades.splice(index,1)
-                console.log(index)      
-            }
-        })
+            //Selecionando id da atividade
+            const id="'"+atividade.id+"'"
+            const elemento_por_id=document.querySelector(`[data-id=${id}]`)
+            
+            //adicionando função de inicialização ao botão
+            const botao=elemento_por_id.children[1]
+            const icone=botao.children[0]
+            
+            botao.addEventListener('click',()=>{
+                if(atividade.status==='Planejado'){
+                    atividade.iniciado()
+                    botao.style.backgroundColor='var(--vermelho)'
+                    icone.innerHTML='close'
+                    elemento_por_id.dataset.status=atividade.status
+                } else if(atividade.status==="Em andamento"){
+                    atividade.finalizado()
+                    elemento_por_id.dataset.status=atividade.status
+                    elemento_por_id.style.display='none'
+                    
+                }
+            })
+            
+            
     })
     
     //Escrita do backlog na tela
@@ -113,6 +123,8 @@ window.addEventListener('load',()=>{
         console.log(tempo_backlog)
     }
 })
+
+
 
 function atualizar_tempo(lista){
     //Tempo decorrido de atividade
@@ -137,13 +149,13 @@ function atualizar_tempo(lista){
             }
             atividade.duracao_real=duracao
             atividade.atraso()
-
-            elementos_duracao[lista.indexOf(atividade)].innerHTML=atividade.duracao
-            elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
         }
-        
+        elementos_duracao[lista.indexOf(atividade)].innerHTML=atividade.duracao
+        elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
     }
 }
 
-setInterval(()=>{atualizar_tempo(lista_atividades)},1000)
+setInterval(()=>{
     
+    atualizar_tempo(lista_atividades)
+},1000)
