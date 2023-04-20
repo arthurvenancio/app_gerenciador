@@ -138,6 +138,7 @@ main{
     flex-direction: column;
     align-items: center;
     width: auto;
+    border: 1px solid transparent;
 }
 .backlog_horas{
     font-size: 32px;
@@ -147,6 +148,7 @@ main{
 .backlog_alerta{
     margin: 0;
     margin-bottom: 1em;
+    text-align: center;
 }
 
 .scroll_atividades{

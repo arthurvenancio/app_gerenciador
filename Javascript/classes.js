@@ -28,6 +28,7 @@ class Manutencao extends Atividade{
         super(tempo_estimado)
         this.titulo=`Manutenção - ${equipamento} | ${componente}`
         this.descricao=String(descricao)
+        this.tipo='manutencao'
     }
     
 }
@@ -36,6 +37,7 @@ class Producao extends Atividade{
         super(tempo_estimado)
         this.titulo=`Produção - ${produto}`
         this.quantidade=String(quantidade)
+        this.tipo='producao'
     }
 }
 

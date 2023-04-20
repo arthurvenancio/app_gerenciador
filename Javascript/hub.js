@@ -77,14 +77,35 @@ const manutencaoInst=new classes.manutencao(60,'Equipamento 1','Componente 10','
 const producaoInst=new classes.producao(60,'Produto Teste',1)
 lista_atividades.push(manutencaoInst,producaoInst)
 
-let tempo_backlog=0
+let tempo_backlog_producao=0
+let tempo_backlog_manutencao=0
+
+const backlog_producao=document.querySelector("[data-backlog='producao']")
+const backlog_manutencao=document.querySelector("[data-backlog='manutencao']")
+
+function escritaDeTempo(tempo,elemento){
+    if(tempo.toFixed(2)>=1){
+        elemento.innerHTML=`${tempo.toFixed(2)} h`
+    }
+    else if((tempo*60).toFixed(2)>=1){
+        elemento.innerHTML=`${(tempo*60).toFixed(2)} min`
+    } else {
+        elemento.innerHTML=`${(tempo*60*60).toFixed(2)} s`
+    }
+}
 
 window.addEventListener('load',()=>{
     lista_atividades.forEach((atividade)=>{
         //adicionando atividade ao scroll
         adicionar_atividade(atividade)
+        
         //somando backlog
-        tempo_backlog+=(atividade.tempo_estimado)/(60*60)
+        if(atividade.tipo==='producao'){
+            tempo_backlog_producao+=(atividade.tempo_estimado)/(60*60)
+        }if(atividade.tipo==='manutencao'){
+            tempo_backlog_manutencao+=(atividade.tempo_estimado)/(60*60)
+        }
+        
 
             //Selecionando id da atividade
             const id="'"+atividade.id+"'"
@@ -103,25 +124,26 @@ window.addEventListener('load',()=>{
                 } else if(atividade.status==="Em andamento"){
                     atividade.finalizado()
                     elemento_por_id.dataset.status=atividade.status
+                    //escondendo atividade para o usuário
                     elemento_por_id.style.display='none'
+                    //Tirando a atividade finalizada do backlog
+                    if(atividade.tipo==='producao'){
+                        tempo_backlog_producao-=(atividade.tempo_estimado)/(60*60)
+                    } else if(atividade.tipo==='manutencao'){
+                        tempo_backlog_manutencao-=(atividade.tempo_estimado)/(60*60)
+                    }
                     
                 }
-            })
-            
-            
+
+                //Escrita do backlog na tela
+                escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
+                escritaDeTempo(tempo_backlog_producao,backlog_producao)
+            })     
+            //Escrita do backlog na tela          
+            escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
+            escritaDeTempo(tempo_backlog_producao,backlog_producao)
+             
     })
-    
-    //Escrita do backlog na tela
-    const backlog=document.querySelector(".backlog_horas")
-    if(tempo_backlog.toFixed(2)>1){
-        backlog.innerHTML=`${tempo_backlog.toFixed(2)} h`
-    }
-    else if((tempo_backlog*60).toFixed(2)>1){
-        backlog.innerHTML=`${(tempo_backlog*60).toFixed(2)} min`
-    } else {
-        backlog.innerHTML=`${(tempo_backlog*60*60).toFixed(2)} s`
-        console.log(tempo_backlog)
-    }
 })
 
 
