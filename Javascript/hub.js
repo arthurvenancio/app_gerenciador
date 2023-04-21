@@ -119,30 +119,36 @@ window.addEventListener('load',()=>{
             const icone=botao.children[0]
             
             botao.addEventListener('click',()=>{
+                //Iniciar a tarefa pela primeira vez
                 if(atividade.status==='Planejado'){
                     atividade.iniciado()
-                    botao.style.backgroundColor='var(--vermelho)'
-                    icone.innerHTML='close'
+                    botao.style.backgroundColor='var(--amarelo)'
+                    icone.innerHTML='pause_circle'
                     elemento_por_id.dataset.status=atividade.status
-                } else if(atividade.status==="Em andamento"){
-                    atividade.finalizado()
+                } 
+                //Pausar a tarefa
+                else if(atividade.status==="Em andamento"){
+                    atividade.parar()
+                    botao.style.backgroundColor='var(--azul-claro)'
+                    icone.innerHTML='play_circle'
                     elemento_por_id.dataset.status=atividade.status
-                    
-                    //escondendo atividade para o usuário
-                    elemento_por_id.style.display='none'
-                    
+                }
+                else if(atividade.status==="Pausado"){
+                    atividade.continuar()
+                    botao.style.backgroundColor='var(--amarelo)'
+                    icone.innerHTML='pause_circle'
+                    elemento_por_id.dataset.status=atividade.status
+                    console.log(atividade.pausas_totais)
+                }
+                /*
+                else if(atividade.status==="Finalizado"){   
                     //Tirando a atividade finalizada do backlog
                     if(atividade.tipo==='producao'){
                         tempo_backlog_producao-=(atividade.tempo_estimado)/(60*60)
                     } else if(atividade.tipo==='manutencao'){
                         tempo_backlog_manutencao-=(atividade.tempo_estimado)/(60*60)
                     }
-                    
-                }
-
-                //Escrita do backlog na tela
-                escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
-                escritaDeTempo(tempo_backlog_producao,backlog_producao)
+                }*/
             })     
             //Escrita do backlog na tela          
             escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
@@ -158,7 +164,7 @@ function atualizar_tempo(lista){
     let elementos_status=document.querySelectorAll('.status_atual')
     for(let atividade of lista){
         if(atividade.status==="Em andamento"){
-            let duracao=Math.floor((Date.now()-atividade.inicio_tarefa)/1000)
+            let duracao=Math.floor((Date.now()-atividade.inicio_tarefa-atividade.pausas_totais)/1000)
             if(duracao<60){
                 atividade.duracao=`${duracao}s`
             }

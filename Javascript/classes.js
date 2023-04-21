@@ -7,6 +7,8 @@ class Atividade{
         this.status="Planejado";
         this.criacao=Date.now();
         this.id=this.criacao+""+Math.random()
+        this.pausas_totais=0
+        this.inicio_pausa=0
     }
     atraso(){
         if(this.duracao_real>this.tempo_estimado){
@@ -20,7 +22,15 @@ class Atividade{
     finalizado(){
         this.status='Finalizado'
         this.final_tarefa=Date.now();
-    } 
+    }
+    parar(){
+        this.status='Pausado'
+        this.inicio_pausa=Date.now()
+    }
+    continuar(){
+        this.status='Em andamento'
+        this.pausas_totais+=Date.now()-this.inicio_pausa
+    }
 }
 
 class Manutencao extends Atividade{
