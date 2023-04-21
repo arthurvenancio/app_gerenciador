@@ -33,11 +33,13 @@ class Manutencao extends Atividade{
     
 }
 class Producao extends Atividade{
-    constructor(tempo_estimado,produto,quantidade){
+    constructor(tempo_estimado,produto,quantidade,local){
         super(tempo_estimado)
         this.titulo=`Produção - ${produto}`
         this.quantidade=String(quantidade)
         this.tipo='producao'
+        this.local=String(local)
+        this.produzidos=0
     }
 }
 

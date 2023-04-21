@@ -76,7 +76,7 @@ function adicionar_atividade(atividade){
 let lista_atividades=[]
 //Instancias de atividades
 const manutencaoInst=new classes.manutencao(60,'Equipamento 1','Componente 10','Está manutenção é um teste')
-const producaoInst=new classes.producao(60,'Produto Teste',1)
+const producaoInst=new classes.producao(60,'Produto Teste',1,'Equipamento 1')
 //Inserindo na lista de atividade
 lista_atividades.push(manutencaoInst,producaoInst)
 //Iniciando os tempos de backlog
