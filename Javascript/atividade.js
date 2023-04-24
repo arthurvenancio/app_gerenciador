@@ -1,15 +1,15 @@
 import { classes } from "./classes.js";
 const textoLorem='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sed turpis tincidunt id aliquet. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Cursus vitae congue mauris rhoncus. Arcu dictum varius duis at consectetur lorem donec massa. Lorem ipsum dolor sit amet consectetur. Sem fringilla ut morbi tincidunt augue interdum velit euismod.'
 
-let atividade=new classes.producao(60,'Produto Teste',1,'Equipamento 1')
-/*
+let atividade
+
 //Randomizar tipo de atividade
 if(Math.random()<=0.5){
     atividade = new classes.manutencao(60,'Equipamento 1','Componente 10',textoLorem)
 } else{
     atividade = new classes.producao(60,'Produto Teste',1)
 }
-*/
+
 
 function telaManutencao(atividade){
     //Selecionando Main

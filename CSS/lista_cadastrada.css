@@ -1,0 +1,39 @@
+.pesquisa{
+    display: flex;
+    
+    margin-top: 0.75em;
+
+    border-radius: var(--curvatura-canto);
+    border: 2px solid var(--azul-claro);
+    overflow: hidden;
+}
+.pesquisa_texto{
+    width: 70vw;
+
+    border: none;
+
+    background-color: var(--cinza-claro);
+
+    font-size: 0.95em;
+    padding: 0.5em;
+
+    color: var(--branco);
+
+    transition: padding 300ms;
+}
+.pesquisa_texto::placeholder{
+    color: var(--branco-escuro);
+    font-style: italic;
+    
+}
+.pesquisa_texto:focus{
+    font-size: 1.5em;
+    padding: 0.6em;
+}
+.pesquisa_botao{
+    background-color: var(--azul-claro);
+    color: var(--branco);
+    border: none;
+
+    box-shadow: -2px 0 -4px var(--sombra);
+}

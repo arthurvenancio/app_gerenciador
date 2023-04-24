@@ -77,9 +77,9 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
 
         cadastro.value='Cadastrar Manutenção'
 
-        cadastro.classList.add("login_botoes")
-        cadastro.classList.add( 'login_entrar')
-        cadastro.classList.add('novo_usuario_botao')
+        cadastro.classList.add("botoes")
+        cadastro.classList.add( 'botao_1')
+        cadastro.classList.add('botao_unico')
 
         cadastro.addEventListener('click',()=>{
             window.location.href='/HTML/hub.html'
@@ -137,9 +137,9 @@ tipo_atividade.forEach(atividade=>atividade.addEventListener('change',()=>{
 
         cadastro.value='Cadastrar Produção'
 
-        cadastro.classList.add("login_botoes")
-        cadastro.classList.add( 'login_entrar')
-        cadastro.classList.add('novo_usuario_botao')
+        cadastro.classList.add("botoes")
+        cadastro.classList.add( 'botao_1')
+        cadastro.classList.add('botao_unico')
 
         cadastro.addEventListener('click',()=>{
             window.location.href='/HTML/hub.html'

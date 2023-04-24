@@ -72,17 +72,15 @@ function adicionar_atividade(atividade){
     status.innerHTML=atividade.status
 
 }
-//Lista para inserir no scroll de atividades
+
 let lista_atividades=[]
-//Instancias de atividades
 const manutencaoInst=new classes.manutencao(60,'Equipamento 1','Componente 10','Está manutenção é um teste')
 const producaoInst=new classes.producao(60,'Produto Teste',1,'Equipamento 1')
-//Inserindo na lista de atividade
 lista_atividades.push(manutencaoInst,producaoInst)
-//Iniciando os tempos de backlog
+
+
 let tempo_backlog_producao=0
 let tempo_backlog_manutencao=0
-//Selecionando os elementos de backlog
 const backlog_producao=document.querySelector("[data-backlog='producao']")
 const backlog_manutencao=document.querySelector("[data-backlog='manutencao']")
 
@@ -99,7 +97,7 @@ function escritaDeTempo(tempo,elemento){
 
 window.addEventListener('load',()=>{
     lista_atividades.forEach((atividade)=>{
-        //adicionando atividade ao scroll
+
         adicionar_atividade(atividade)
         
         //somando backlog
@@ -109,12 +107,9 @@ window.addEventListener('load',()=>{
             tempo_backlog_manutencao+=(atividade.tempo_estimado)/(60*60)
         }
         
-
-            //Selecionando id da atividade
             const id="'"+atividade.id+"'"
             const elemento_por_id=document.querySelector(`[data-id=${id}]`)
             
-            //adicionando função de inicialização ao botão
             const botao=elemento_por_id.children[1]
             const icone=botao.children[0]
             
@@ -133,22 +128,13 @@ window.addEventListener('load',()=>{
                     icone.innerHTML='play_circle'
                     elemento_por_id.dataset.status=atividade.status
                 }
+                //Continuar a tarefa
                 else if(atividade.status==="Pausado"){
                     atividade.continuar()
                     botao.style.backgroundColor='var(--amarelo)'
                     icone.innerHTML='pause_circle'
                     elemento_por_id.dataset.status=atividade.status
-                    console.log(atividade.pausas_totais)
                 }
-                /*
-                else if(atividade.status==="Finalizado"){   
-                    //Tirando a atividade finalizada do backlog
-                    if(atividade.tipo==='producao'){
-                        tempo_backlog_producao-=(atividade.tempo_estimado)/(60*60)
-                    } else if(atividade.tipo==='manutencao'){
-                        tempo_backlog_manutencao-=(atividade.tempo_estimado)/(60*60)
-                    }
-                }*/
             })     
             //Escrita do backlog na tela          
             escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
@@ -185,5 +171,4 @@ function atualizar_tempo(lista){
         elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
     }
 }
-
 setInterval(()=>{atualizar_tempo(lista_atividades)},1000)

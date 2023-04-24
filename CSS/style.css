@@ -24,7 +24,6 @@
 }
 
 
-
 body{
     background-color: var(--cinza-escuro);
     color: var(--branco);
@@ -32,7 +31,8 @@ body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
-/* Começo de elementos do header*/
+
+
 header{
     background-color: var(--azul-escuro);
     height: var(--altura-header);
@@ -75,7 +75,8 @@ header{
     border: none;
     border-radius: var(--curvatura-canto) 0 0 var(--curvatura-canto);
 }
-/* Começo de elementos da main*/
+
+
 main{
     position: fixed;
     top: var(--altura-header);
@@ -93,104 +94,8 @@ main{
 .sem_footer{
     height: calc(100vh - var(--altura-header));
 }
-.pesquisa{
-    display: flex;
-    
-    margin-top: 0.75em;
-}
-.cadastro{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-.central{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.label_input{
-    border-radius: var(--curvatura-canto);
-    border: 2px solid var(--azul-claro);
-    overflow: hidden;
-}
-.pesquisa_texto{
-    width: 70vw;
 
-    border: none;
 
-    background-color: var(--cinza-claro);
-
-    font-size: 0.95em;
-    padding: 0.5em;
-
-    color: var(--branco);
-
-    transition: padding 300ms;
-}
-.pesquisa_texto::placeholder{
-    color: var(--branco-escuro);
-    font-style: italic;
-    
-}
-.pesquisa_texto:focus{
-    font-size: 1.5em;
-    padding: 0.6em;
-}
-.pesquisa_botao{
-    background-color: var(--azul-claro);
-    color: var(--branco);
-    border: none;
-
-    box-shadow: -2px 0 -4px var(--sombra);
-}
-.backlog{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    border: 1px solid transparent;
-}
-.backlog_horas{
-    font-size: 32px;
-    padding: 0;
-    margin: 0.25em 0;
-}
-.backlog_alerta{
-    margin: 0;
-    margin-bottom: 1em;
-    text-align: center;
-}
-
-.scroll_atividades{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin: 0 1.5em ;
-}
-.atividade_botao{
-    padding: 0 1em;
-    background-color: var(--azul-claro);
-    border: none;
-}
-.atividade{
-    padding: 0.5em;
-
-    text-decoration: none;
-    color: var(--branco);
-
-    width: 100%;
-}
-
-.atividade h2{
-    font-size: var(--botão);
-}
-
-.atividade_status{
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Começo de elementos do footer*/
 footer{
     background-color: var(--cinza-claro);
     position: fixed;
@@ -211,7 +116,6 @@ footer{
 
     border-radius: var(--curvatura-canto) var(--curvatura-canto) 0 0;
 }
-
 footer a{
     text-decoration: none;
     color: var(--branco);
@@ -224,28 +128,16 @@ footer a{
     font-size: var(--legenda-icone);
     font-family: 'Poppins', sans-serif;
 }
-.adicionar_footer{
-    background-color: var(--cinza-claro);
-    box-shadow: none;
-    border: none;
-    color: var(--branco);
-}
-/* Tela de Login*/
-.login_div{
-    margin-top: 1em;
-    
-    display: flex;
 
-    justify-content: space-around;
-}
-.login_botoes{
+
+.botoes{
     padding: 1em;
 
     margin: 1em 0;
+
+    width: 40vw;
     
     border-radius: var(--curvatura-canto);
-    
-    width: 10em;
 
     font-weight: bold;
     color: var(--branco);
@@ -253,19 +145,25 @@ footer a{
     font-family: 'Poppins', sans-serif;
 
 }
-.login_entrar{
+.botao_1{
     background-color: var(--azul-claro);
     border: none;
 }
-.login_cadastro{
+.botao_2{
     background-color: transparent;
     border: 2px solid var(--azul-claro);
 }
-.novo_usuario_botao{
+.botao_unico{
     width: 80vw;
     font-size: var(--botão);
 }
 
+
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
 .input_cadastro{
     padding: 0.5em;
 
@@ -285,8 +183,14 @@ footer a{
 
     width: 80vw;
 }
-
 .input_cadastro::placeholder{
     color: var(--branco-escuro);
     font-style: italic;
+}
+
+
+.central{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

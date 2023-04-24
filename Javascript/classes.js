@@ -52,8 +52,16 @@ class Producao extends Atividade{
         this.produzidos=0
     }
 }
+class Usuario{
+    constructor(email,senha,empresa){
+        this.email=email
+        this.senha=senha
+        this.empresa=empresa
+    }
+}
 
 export const classes={
     manutencao:Manutencao,
     producao:Producao,
+    usuario:Usuario,
 }

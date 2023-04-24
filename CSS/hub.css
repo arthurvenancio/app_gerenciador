@@ -1,0 +1,46 @@
+.backlog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    border: 1px solid transparent;
+}
+.backlog_horas{
+    font-size: 32px;
+    padding: 0;
+    margin: 0.25em 0;
+}
+.backlog_alerta{
+    margin: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.scroll_atividades{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 0 1.5em ;
+}
+.atividade_botao{
+    padding: 0 1em;
+    background-color: var(--azul-claro);
+    border: none;
+}
+.atividade{
+    padding: 0.5em;
+
+    text-decoration: none;
+    color: var(--branco);
+
+    width: 100%;
+}
+
+.atividade h2{
+    font-size: var(--botão);
+}
+
+.atividade_status{
+    display: flex;
+    justify-content: space-between;
+}
