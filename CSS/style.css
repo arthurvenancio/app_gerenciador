@@ -156,6 +156,7 @@ footer a{
 .botao_unico{
     width: 80vw;
     font-size: var(--botão);
+    align-self: center;
 }
 
 
@@ -190,7 +191,6 @@ footer a{
 
 
 .central{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
 }

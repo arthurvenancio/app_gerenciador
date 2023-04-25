@@ -33,8 +33,42 @@
             </label>
             <br>
         </label>
-        <section id="area_atividade_especifica"></section>
         
+        <section data-tipoAtividade="manutencao" class="central" style="display: none;">
+            <form action="">
+                <select name="seletor_equipamento" id="seletor_equipamento" class="input_cadastro">
+                    <option value="" disabled hidden selected>Selecione Equipamento</option>
+                </select>
+                <select name="seletor_componente" id="seletor_componente" class="input_cadastro">
+                    <option value="" disabled hidden selected>Selecione Componente</option>
+                </select>
+                <label>
+                    <h3>Tempo Esperado de Manutenção</h3>
+                    <input type="time" name="" id="" class="input_cadastro">
+                </label>
+                <label>
+                    <h3>Descrição da Manutenção</h3>
+                    <textarea name="" id="" cols="40" rows="5" class="input_cadastro"></textarea>
+                </label>
+                <input type="submit" value="Cadastrar Manutenção" class="botoes botao_1 botao_unico" data-cadastro="manutencao">
+            </form>
+        </section>
+
+        <section data-tipoAtividade="producao" class="central" style="display: none;">
+            <form action="">
+                <select name="seletor_produto" id="seletor_produto" class="input_cadastro">
+                    <option value="" disabled hidden selected>Selecione Produto</option>
+                    <option value="novo_produto" >Novo Produto</option>
+                </select>
+                <label>
+                    <h3>Quantidade para Producão</h3>
+                    <input type="number" name="" id="" class="input_cadastro">
+                </label>
+                <input type="submit" value="Cadastrar Producão" class="botoes botao_1 botao_unico" data-cadastro="producao">
+            </form>
+            
+
+        </section>
     </main>
     <script src="/Javascript/nova_atividade.js"></script>
 </body>
