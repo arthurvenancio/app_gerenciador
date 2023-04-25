@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="/Imagens/Logo_Gerenciador_Sem_Fundo.png">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="grupo_titulo_header">
+            <a href="/HTML/lista_cadastrada.html?lista=Produtos" class="voltar">
+                <span class="material-symbols-outlined">
+                arrow_back_ios
+                </span>
+            </a>
+            <h1 class="titulo_header">Novo Produto</h1>
+        </div>
+        <button class="log_off" onclick="window.location.href='../index.html'">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+    </header>
+    <main class="sem_footer">
+        <form class="central" action="">
+            <label >
+                <h3>Nome do Produto</h3>
+                <input type="text" class="input_cadastro" placeholder="Insira Nome do Produto">
+            </label>
+            <label >
+                <h3>Equipamento para Produção</h3>
+                <select name="seletor_equipamento" id="seletor_equipamento" class="input_cadastro">
+                    <option value="" disabled hidden selected>Selecione Equipamento</option>
+                </select>
+            </label>
+            <label>
+                <h3>Tempo Esperado de Producão</h3>
+                <input type="time" name="" id="" class="input_cadastro">
+            </label>
+            <button class="botoes botao_1 botao_unico" type="submit" onclick="window.location.href='/HTML/lista_cadastrada.html?lista=Produtos'">Cadastrar</button>
+        </form>
+    </main>
+</body>
+</html>

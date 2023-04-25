@@ -18,6 +18,7 @@ function telaProdutos(){
 
     pesquisa.placeholder="Insira nome do produto"
 
+    botao_footer.href='/HTML/novo_produto.html'
     legenda_botao_footer.innerHTML='Adicionar Produto'
 }
 

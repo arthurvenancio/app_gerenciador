@@ -24,38 +24,41 @@
         </button>
     </header>
     <main class="sem_footer">
-        <label class="cadastro">
-            <h3>Informações Gerais</h3>
-            <input type="text" class="input_cadastro" placeholder="Insira TAG">
-            <input type="text" class="input_cadastro" placeholder="Nome do Equipamento">
-            <input type="text" class="input_cadastro" placeholder="Setor do Equipamento">
-        </label>
-        <label class="cadastro">
-            <h3>Data e Valor de Compra</h3>
-            <input type="date" class="input_cadastro">
-            <input type="number" class="input_cadastro" placeholder="R$ XX,XX">
-        </label>
-        <label class="cadastro">
-            <h3>Custo por Hora</h3>
-            <input type="number" class="input_cadastro" placeholder="XX,XX R$/h">
-        </label>
-        <label class="cadastro">
-            <h3>Capacidade de Atividades Simultâneas</h3>
-            <input type="number" class="input_cadastro" placeholder="X">
-        </label>
-        <label class="cadastro">
-            <h3>Meta de Eficiência Total (OEE)</h3>
-            <input type="number" class="input_cadastro" placeholder="XX %">
-        </label>
-        <label class="cadastro">
-            <h3>Tempo de Preparação para Uso (Setup)</h3>
-            <input type="time" step="1" min="00:00:00" max="59:59:00" class="input_cadastro" >
-        </label>
-        <label class="cadastro">
-            <h3>Tempo de Limpeza</h3>
-            <input type="time" step="1" min="00:00:00" max="59:59:00" class="input_cadastro">
-        </label>
-        <button class="botoes botao_1 botao_unico" onclick="window.location.href='/HTML/equipamento.html'">Cadastrar</button>
+        <form class="central" action="">
+            <label class="cadastro">
+                <h3>Informações Gerais</h3>
+                <input type="text" class="input_cadastro" placeholder="Insira TAG">
+                <input type="text" class="input_cadastro" placeholder="Nome do Equipamento">
+                <input type="text" class="input_cadastro" placeholder="Setor do Equipamento">
+            </label>
+            <label class="cadastro">
+                <h3>Data e Valor de Compra</h3>
+                <input type="date" class="input_cadastro">
+                <input type="number" class="input_cadastro" placeholder="R$ XX,XX">
+            </label>
+            <label class="cadastro">
+                <h3>Custo por Hora</h3>
+                <input type="number" class="input_cadastro" placeholder="XX,XX R$/h">
+            </label>
+            <label class="cadastro">
+                <h3>Capacidade de Atividades Simultâneas</h3>
+                <input type="number" class="input_cadastro" placeholder="X">
+            </label>
+            <label class="cadastro">
+                <h3>Meta de Eficiência Total (OEE)</h3>
+                <input type="number" class="input_cadastro" placeholder="XX %">
+            </label>
+            <label class="cadastro">
+                <h3>Tempo de Preparação para Uso (Setup)</h3>
+                <input type="time" step="1" min="00:00:00" max="59:59:00" class="input_cadastro" >
+            </label>
+            <label class="cadastro">
+                <h3>Tempo de Limpeza</h3>
+                <input type="time" step="1" min="00:00:00" max="59:59:00" class="input_cadastro">
+            </label>
+            <button class="botoes botao_1 botao_unico" type="submit" onclick="window.location.href='/HTML/lista_cadastrada.html?lista=Equipamentos'">Cadastrar</button>
+        </form>
+        
     </main>
 
 </body>
