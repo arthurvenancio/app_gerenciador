@@ -171,4 +171,5 @@ function atualizar_tempo(lista){
         elementos_status[lista.indexOf(atividade)].innerHTML=atividade.status
     }
 }
+
 setInterval(()=>{atualizar_tempo(lista_atividades)},1000)
