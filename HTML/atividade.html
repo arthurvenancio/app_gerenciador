@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/atividade.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" href="/Imagens/Logo_Gerenciador_Sem_Fundo.png">
     <title>Gerenciador - Atividade</title>
@@ -24,6 +25,33 @@
         </button>
     </header>
     <main class="sem_footer">
+        <form class="central" action="">
+            <h3 class="titulo"></h3>
+            <h4 class="subtitulo"></h4>
+            <div class="area_contador" data-tipoAtividade="producao">
+                <h2 id="contador"></h2>
+                <div class="area_botoes">
+                    <button class="botao_contador"><span class="material-symbols-outlined">remove</span></button>
+                    <button class="botao_contador"><span class="material-symbols-outlined">add</span></button>
+                </div>                
+            </div>
+            <p class="descricao" data-tipoAtividade="manutencao"></p>
+            <h4 class="alerta">Você está produzindo mais do que o especificado</h4>
+            <label>
+                <h3 style="margin-bottom: 0;">Anotações</h3>
+                <textarea name="" id="" cols="50" rows="5" class="input_cadastro"></textarea>
+            </label>        
+            <div class="area_botoes">
+                <button type="submit" class="botoes botao_problema">
+                    <span class="material-symbols-outlined">warning</span>
+                    <p>Problema na Execução</p>
+                </button>
+                <button type="submit" class="botoes botao_conclusao">
+                    <span class="material-symbols-outlined">task_alt</span>
+                    <p>Atividade Concluída</p>
+                </button>
+            </div>
+        </form>
     </main>
     <script src="/Javascript/atividade.js" type="module"></script>
 </body>
