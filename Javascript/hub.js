@@ -3,43 +3,31 @@ import { classes } from './classes.js'
 function adicionar_atividade(atividade){
     //Criando div da atividade
     const div_elemento=document.createElement('div')
-    //Estilizando div
-    div_elemento.style.display='flex'
-    div_elemento.style.border='2px solid var(--azul-claro)'
-    div_elemento.style.borderRadius='var(--curvatura-canto)'
-    div_elemento.style.justifyContent='space-between'
-    div_elemento.style.overflow='hidden'
-    //Adicionando data-attribute
+    
+    div_elemento.classList.add('div_atividade')
     div_elemento.setAttribute('data-tipo','atividade_scroll')
     div_elemento.setAttribute('data-status',`${atividade.status}`)
     div_elemento.setAttribute('data-id',`${atividade.id}`)
     
     //Criando o elemento linkado a atividade
     const elemento=document.createElement('a')
-    elemento.href='./atividade.html'
+    elemento.href=`./atividade.html?tipoAtividade=${atividade.tipo}`
     elemento.classList.add('atividade')
-    //Anexando link a div
+    
     div_elemento.appendChild(elemento)
   
     //Criando botão de atividade 
     const botao=document.createElement('button')
-    //Anexando botao a div
     div_elemento.appendChild(botao)
-    //Adicionando Classe ao botão
     botao.classList.add('atividade_botao')
     
-    //Criando span para icone do botao
+    //Criando icone do botao
     const botao_icone=document.createElement('span')
-    //Adcionando classe ao icone
     botao_icone.classList.add('material-symbols-outlined')
-    //Adicionando data attribute no icone
     botao_icone.setAttribute('data-tipo','icone_botao_scroll')
-    //Adicionando valor ao icone
     botao_icone.innerHTML='play_circle'
-    //estilizando icone
     botao_icone.style.color='var(--branco)'
     botao_icone.style.fontSize='2em'
-    //Anexando icone ao botao
     botao.appendChild(botao_icone)
     
     
@@ -49,7 +37,6 @@ function adicionar_atividade(atividade){
     //Criando o título
     const titulo=document.createElement('h2')
     titulo.innerHTML=atividade.titulo
-    //Adicionando titulo ao elemento
     elemento.appendChild(titulo)
     
     //Criando area do status da atividade
@@ -57,7 +44,6 @@ function adicionar_atividade(atividade){
     const tempo_de_atividade=document.createElement('p')
     const status=document.createElement('p')
     
-    //Colocando classe
     atividade_status.classList.add('atividade_status')
     tempo_de_atividade.classList.add('duracao_atividade')
     status.classList.add('status_atual')

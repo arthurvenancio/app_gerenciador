@@ -1,6 +1,7 @@
 .titulo{
     padding-bottom: 0.1em;
     margin-bottom: 0;
+    align-self: flex-start;
 }
 .subtitulo{
     padding-top: 0;
@@ -9,6 +10,8 @@
     font-style: italic;
     font-size: 0.9em;
     color: var(--branco-escuro);
+
+    align-self: flex-start;
 }
 
 
@@ -16,7 +19,7 @@
     display: none;
     align-items: center;
     justify-content: space-between;    
-    width: 100%;
+    width: 80vw;
 }
 .area_botoes{
     display: flex;

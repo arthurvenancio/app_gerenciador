@@ -1,9 +1,13 @@
 import { classes } from "./classes.js";
+
 //Começo de coisas para teste
+const parametros = new URLSearchParams(window.location.search);
+const tipo_atividade = parametros.get('tipoAtividade');
+
 const textoLorem='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sed turpis tincidunt id aliquet. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Cursus vitae congue mauris rhoncus. Arcu dictum varius duis at consectetur lorem donec massa. Lorem ipsum dolor sit amet consectetur. Sem fringilla ut morbi tincidunt augue interdum velit euismod.'
 let atividade
 
-if(false){
+if(tipo_atividade=='manutencao'){
     atividade = new classes.manutencao(60,'Equipamento 1','Componente 10',textoLorem)
 } else{
     atividade = new classes.producao(60,'Produto Teste',1,'Equipamento Teste')

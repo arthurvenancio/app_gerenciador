@@ -22,6 +22,14 @@
     gap: 1em;
     margin: 0 1.5em ;
 }
+.div_atividade{
+    display: flex;
+    justify-content: space-between;
+
+    border: 2px solid var(--azul-claro);
+    border-radius: var(--curvatura-canto);
+    overflow: hidden;
+}
 .atividade_botao{
     padding: 0 1em;
     background-color: var(--azul-claro);
@@ -35,11 +43,9 @@
 
     width: 100%;
 }
-
 .atividade h2{
     font-size: var(--botão);
 }
-
 .atividade_status{
     display: flex;
     justify-content: space-between;

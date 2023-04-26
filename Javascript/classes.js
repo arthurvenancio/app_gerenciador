@@ -59,9 +59,36 @@ class Usuario{
         this.empresa=empresa
     }
 }
-
+class Produto{
+    constructor(nome,equipamento,tempo_esperado){
+        this.nome=nome
+        this.equipamento=equipamento
+        this.tempo_esperado=tempo_esperado
+        this.estoque=0
+    }
+    adicionarEstoque(quantidade){
+        this.estoque+=quantidade
+    }
+    retirarEstoque(quantidade){
+        this.estoque-=quantidade
+    }
+}
+class Equipamento{
+    constructor(tag,nome,data_compra,valor_compra,capacidade,oee,tempo_setup,tempo_limpeza){
+        this.tag=tag
+        this.nome=nome
+        this.data_compra=data_compra
+        this.valor_compra=valor_compra
+        this.capacidade=capacidade
+        this.oee=oee
+        this.tempo_setup=tempo_setup
+        this.tempo_limpeza=tempo_limpeza
+    }
+}
 export const classes={
     manutencao:Manutencao,
     producao:Producao,
     usuario:Usuario,
+    produto:Produto,
+    equipamento:Equipamento,
 }
