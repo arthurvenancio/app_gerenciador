@@ -1,14 +1,14 @@
 import { classes } from "./classes.js";
 //inicio coisas para teste
 const equipamento1=new classes.equipamento('EQUIP-001','Equipamento Teste 1',Date.now(),100,1,0.9,30000,60000)
-const equipamento2=new classes.equipamento('EQUIP-002','Equipamento Teste 2',Date.now(),100,1,0.9,30000,60000)
-const equipamento3=new classes.equipamento('EQUIP-003','Equipamento Teste 3',Date.now(),100,1,0.9,30000,60000)
+const equipamento2=new classes.equipamento('EQUIP-002','Equipamento bla',Date.now(),100,1,0.9,30000,60000)
+const equipamento3=new classes.equipamento('EQUIP-003','Equipamento bla',Date.now(),100,1,0.9,30000,60000)
 const produto1=new classes.produto('Produto Teste 1','Equipamento Teste',60000)
 const produto2=new classes.produto('Produto Teste 2','Equipamento Teste',60000)
 const produto3=new classes.produto('Produto Teste 3','Equipamento Teste',60000)
 
 let lista_equipamentos=[equipamento1,equipamento2,equipamento3]
-let lista_produtos=[produto1,produto1,produto1]
+let lista_produtos=[produto1,produto2,produto3]
 
 //fim coisas para teste
 
@@ -86,4 +86,31 @@ window.addEventListener('load',()=>{
     if(lista_selecionada=='Produtos'){
         telaProdutos()
     }
+})
+
+pesquisa.addEventListener('input',(event)=>{
+    
+    setTimeout(()=>{
+        const valor_pesquisa = event.target.value
+        const links=scroll.querySelectorAll('.produto')
+        links.forEach(link=>{
+            if(valor_pesquisa==""){
+                link.style.display='flex'
+            }else{
+                if(lista_selecionada=='Equipamentos'){
+                    const titulo=link.querySelector('h3').innerHTML+" "+link.querySelector('span').innerHTML
+                    if(!titulo.includes(valor_pesquisa)){
+                        link.style.display='none'
+                    }
+                }
+                if(lista_selecionada=='Produtos'){
+                    const titulo=link.querySelector('h3').innerHTML
+                    if(!titulo.includes(valor_pesquisa)){
+                        link.style.display='none'
+                    }
+                }
+                
+            }
+        })
+    },600)
 })
