@@ -1,10 +1,14 @@
 import { classes } from "./classes.js";
 //inicio coisas para teste
-const equipamento=new classes.equipamento('EQUIP-001','Equipamento Teste',Date.now(),100,1,0.9,30000,60000)
-const produto=new classes.produto('Produto Teste','Equipamento Teste',60000)
+const equipamento1=new classes.equipamento('EQUIP-001','Equipamento Teste 1',Date.now(),100,1,0.9,30000,60000)
+const equipamento2=new classes.equipamento('EQUIP-002','Equipamento Teste 2',Date.now(),100,1,0.9,30000,60000)
+const equipamento3=new classes.equipamento('EQUIP-003','Equipamento Teste 3',Date.now(),100,1,0.9,30000,60000)
+const produto1=new classes.produto('Produto Teste 1','Equipamento Teste',60000)
+const produto2=new classes.produto('Produto Teste 2','Equipamento Teste',60000)
+const produto3=new classes.produto('Produto Teste 3','Equipamento Teste',60000)
 
-let lista_equipamentos=[equipamento,equipamento,equipamento]
-let lista_produtos=[produto,produto,produto]
+let lista_equipamentos=[equipamento1,equipamento2,equipamento3]
+let lista_produtos=[produto1,produto1,produto1]
 
 //fim coisas para teste
 
