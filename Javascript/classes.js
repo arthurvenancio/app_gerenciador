@@ -83,7 +83,26 @@ class Equipamento{
         this.oee=oee
         this.tempo_setup=tempo_setup
         this.tempo_limpeza=tempo_limpeza
+        this.componentes=[]
+        this.manutencao_feita=0
     }
+    adicionandoComponente(nome){
+        const componente={
+            nome_componente:nome,
+            quantidade_de_manutencoes:0,
+            instalacao_componente:Date.now(),
+        }
+        this.componentes.push(componente)
+    }
+    realizandoManutencao(nome_componente){
+        this.manutencao_feita+=1
+        this.componentes.forEach(componente=>{
+            if(componente.nome==nome_componente){
+                componente.quantidade_de_manutencoes+=1
+            }
+        })
+    }
+
 }
 export const classes={
     manutencao:Manutencao,

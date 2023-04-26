@@ -9,6 +9,7 @@
     --branco-escuro:#c0c1c2;
     --vermelho:#ed1a1a;
     --amarelo:#FFCB27;
+    --verde:#0a8d15;
 
     --sombra:rgba(0, 0, 0, 0.4);
     
@@ -199,4 +200,25 @@ footer a{
     align-self: flex-start; 
     width: calc(80vw + 1em); 
     margin: 0 auto;
+}
+.central_a_direita{
+    align-self: flex-end; 
+    width: calc(80vw + 1em); 
+    margin: 0 auto;
+}
+
+.titulo{
+    padding-bottom: 0.1em;
+    margin-bottom: 0;
+}
+.subtitulo{
+    padding-top: 0;
+    margin-top: 0;
+
+    margin-bottom: 1em;
+
+    font-style: italic;
+    font-size: 0.9em;
+    color: var(--branco-escuro);
+
 }

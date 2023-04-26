@@ -1,0 +1,63 @@
+.espaco_valores{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    flex-wrap: wrap;
+
+    border: 2px solid var(--branco-escuro);
+    border-radius: var(--curvatura-canto);
+
+    padding: 0 0.5em;
+
+    box-sizing: border-box;
+}
+.espaco_valores:hover{
+    background-color: var(--branco-escuro);
+}
+.espaco_valores:hover h3, .espaco_valores:hover p{
+    color: black;
+}
+
+.italic_cinza{
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--branco-escuro);
+}
+
+.destaque_colorido{
+    color: var(--verde);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.lista_componentes{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border: 2px solid var(--branco-escuro);
+    padding: 0.5em;
+    border-radius: var(--curvatura-canto);
+}
+.componente{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--azul-escuro);
+}
+.manutencoes_componentes{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:baseline;
+}
+.legenda_manutencoes_componentes{
+    color: var(--branco-escuro);
+    margin: 0;
+    font-size: 0.75em;
+    font-style: italic;
+}

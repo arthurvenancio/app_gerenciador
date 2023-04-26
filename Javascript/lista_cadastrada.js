@@ -20,6 +20,27 @@ const legenda_botao_footer = document.querySelector('footer a p')
 const pesquisa=document.querySelector('.pesquisa_texto')
 const scroll=document.querySelector('.scroll')
 
+function enviarAtividade(atividade_original) {
+    const objeto=atividade_original
+
+    // Configura a requisição
+    const url = "/equipamento.html";
+    const options = {
+      method: "POST",
+      body: JSON.stringify(objeto)
+    };
+
+    // Envia a requisição
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro na requisição.");
+        }
+        console.log("Objeto enviado com sucesso!");
+      })
+      .catch(error => console.error(error));
+  }
+
 function telaEquipamentos(){
     document.querySelector('.titulo_header').innerHTML=lista_selecionada
 
@@ -30,6 +51,10 @@ function telaEquipamentos(){
 
     lista_equipamentos.forEach(equipamento=>{
         const link_equipamento=document.createElement('a')
+        link_equipamento.href=`equipamento.html`
+        link_equipamento.addEventListener('click',()=>{
+            enviarAtividade(atividade)
+        })
         scroll.appendChild(link_equipamento)
         link_equipamento.classList.add('produto')
         

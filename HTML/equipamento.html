@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/equipamento.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="/Imagens/Logo_Gerenciador_Sem_Fundo.png">
+    <title>Gerenciador - Equipamento</title>
+</head>
+<body>
+    <header>
+        <div class="grupo_titulo_header">
+            <a href="/HTML/lista_cadastrada.html?lista=Equipamentos" class="voltar">
+                <span class="material-symbols-outlined">
+                arrow_back_ios
+                </span>
+            </a>
+            <h1 class="titulo_header">Equipamento</h1>
+        </div>
+        <button class="log_off" onclick="window.location.href='../index.html'">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+    </header>
+    <main class="sem_footer central">
+        <div class="central_a_esquerda cadastro">
+            
+            <div class="espaco_valores">
+                <span><h3>Equipamento Teste 1</h3></span>
+                <span><h3 class="italic_cinza">TAG-0001</h3></span>
+            </div>
+            
+            <div class="espaco_valores">
+                <span><h3>Tempo desde compra :</h3></span>
+                <span><p data-info="tempo_compra">0 dias</p></span>
+            </div>
+            <div class="espaco_valores">
+                <span><h3>Valor :</h3></span>
+                <span><p data-info="valor_compra">R$ xx,xx</p></span>
+            </div>
+            
+        
+            <div class="espaco_valores">
+                <span><h3>OEE Atual</h3></span>
+                <span><h4 data-info="oee" class="destaque_colorido">80%</h4></span>
+            </div>
+
+            <div class="espaco_valores">
+                <span>
+                    <h3>Manutenções Realizadas :</h3>
+                </span>
+                <span>
+                    <p data-info="manutencoes_equipamento">0</p>
+                </span>
+            </div>
+
+            <div class="lista_componentes">
+                
+                <div class="componente">
+                    <span>
+                        <h3>Nome de Componente</h3>
+                    </span>
+                    <div class="central">
+                        <h3 class="manutencoes_componentes">0</h3>
+                        <h4 class="legenda_manutencoes_componentes">Manutenções</h3>
+                    </div>
+                </div>
+
+            </div>
+    
+        </div>
+    </main>
+    <script src="/Javascript/equipamento.js" type="module"></script>
+</body>
+</html>
