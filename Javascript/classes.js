@@ -74,13 +74,14 @@ class Produto{
     }
 }
 class Equipamento{
-    constructor(tag,nome,data_compra,valor_compra,capacidade,oee,tempo_setup,tempo_limpeza){
+    constructor(tag,nome,data_compra,valor_compra,capacidade,oee_esperado,tempo_setup,tempo_limpeza){
         this.tag=tag
         this.nome=nome
         this.data_compra=data_compra
         this.valor_compra=valor_compra
         this.capacidade=capacidade
-        this.oee=oee
+        this.oee_esperado=oee_esperado
+        this.oee_real=0.5
         this.tempo_setup=tempo_setup
         this.tempo_limpeza=tempo_limpeza
         this.componentes=[]
@@ -88,7 +89,7 @@ class Equipamento{
     }
     adicionandoComponente(nome){
         const componente={
-            nome_componente:nome,
+            nome_componente:nome.charAt(0).toUpperCase() + nome.slice(1),
             quantidade_de_manutencoes:0,
             instalacao_componente:Date.now(),
         }
@@ -97,11 +98,13 @@ class Equipamento{
     realizandoManutencao(nome_componente){
         this.manutencao_feita+=1
         this.componentes.forEach(componente=>{
-            if(componente.nome==nome_componente){
+            if(nome_componente.toUpperCase()==componente.nome_componente.toUpperCase()){
                 componente.quantidade_de_manutencoes+=1
             }
+            
         })
     }
+    
 
 }
 export const classes={

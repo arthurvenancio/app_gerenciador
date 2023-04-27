@@ -28,23 +28,23 @@
         <div class="central_a_esquerda cadastro">
             
             <div class="espaco_valores">
-                <span><h3>Equipamento Teste 1</h3></span>
-                <span><h3 class="italic_cinza">TAG-0001</h3></span>
+                <span><h3 data-info="nome">Equipamento Teste 1</h3></span>
+                <span><h3 class="italic_cinza" data-info="tag">TAG-0001</h3></span>
             </div>
             
             <div class="espaco_valores">
-                <span><h3>Tempo desde compra :</h3></span>
-                <span><p data-info="tempo_compra">0 dias</p></span>
+                <span><h3>Data de compra :</h3></span>
+                <span><p data-info="data_compra">0 dias</p></span>
             </div>
             <div class="espaco_valores">
                 <span><h3>Valor :</h3></span>
-                <span><p data-info="valor_compra">R$ xx,xx</p></span>
+                <span><p>R$ <span data-info="valor_compra"></span></p></span>
             </div>
             
         
             <div class="espaco_valores">
                 <span><h3>OEE Atual</h3></span>
-                <span><h4 data-info="oee" class="destaque_colorido">80%</h4></span>
+                <span><h4 data-info="oee_real" class="destaque_colorido">80%</h4></span>
             </div>
 
             <div class="espaco_valores">
@@ -52,22 +52,12 @@
                     <h3>Manutenções Realizadas :</h3>
                 </span>
                 <span>
-                    <p data-info="manutencoes_equipamento">0</p>
+                    <p data-info="manutencao_feita">0</p>
                 </span>
             </div>
 
             <div class="lista_componentes">
-                
-                <div class="componente">
-                    <span>
-                        <h3>Nome de Componente</h3>
-                    </span>
-                    <div class="central">
-                        <h3 class="manutencoes_componentes">0</h3>
-                        <h4 class="legenda_manutencoes_componentes">Manutenções</h3>
-                    </div>
-                </div>
-
+                <h3 class="central">Lista de Componentes</h3>
             </div>
     
         </div>

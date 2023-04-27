@@ -7,6 +7,13 @@ const produto1=new classes.produto('Produto Teste 1','Equipamento Teste',60000)
 const produto2=new classes.produto('Produto Teste 2','Equipamento Teste',60000)
 const produto3=new classes.produto('Produto Teste 3','Equipamento Teste',60000)
 
+equipamento1.adicionandoComponente('valvula')
+equipamento1.adicionandoComponente('vela')
+equipamento1.adicionandoComponente('bobina')
+
+equipamento1.realizandoManutencao('valvula')
+console.log(equipamento1)
+
 let lista_equipamentos=[equipamento1,equipamento2,equipamento3]
 let lista_produtos=[produto1,produto2,produto3]
 
@@ -20,31 +27,15 @@ const legenda_botao_footer = document.querySelector('footer a p')
 const pesquisa=document.querySelector('.pesquisa_texto')
 const scroll=document.querySelector('.scroll')
 
-function enviarAtividade(atividade_original) {
-    const objeto=atividade_original
-
-    // Configura a requisição
-    const url = "/equipamento.html";
-    const options = {
-      method: "POST",
-      body: JSON.stringify(objeto)
-    };
-
-    // Envia a requisição
-    fetch(url, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Erro na requisição.");
-        }
-        console.log("Objeto enviado com sucesso!");
-      })
-      .catch(error => console.error(error));
+function enviarAtividade(atividade) {
+    const objeto=JSON.stringify(atividade)
+    localStorage.setItem('objeto',objeto)
   }
 
 function telaEquipamentos(){
     document.querySelector('.titulo_header').innerHTML=lista_selecionada
 
-    pesquisa.placeholder="Insira TAG ou nome do equipamento"
+    pesquisa.placeholder="Pesquise TAG ou nome do equipamento"
 
     botao_footer.href='/HTML/novo_equipamento.html'
     legenda_botao_footer.innerHTML='Adicionar Equipamento'
@@ -53,7 +44,7 @@ function telaEquipamentos(){
         const link_equipamento=document.createElement('a')
         link_equipamento.href=`equipamento.html`
         link_equipamento.addEventListener('click',()=>{
-            enviarAtividade(atividade)
+            enviarAtividade(equipamento)
         })
         scroll.appendChild(link_equipamento)
         link_equipamento.classList.add('produto')
@@ -72,7 +63,7 @@ function telaEquipamentos(){
 function telaProdutos(){
     document.querySelector('.titulo_header').innerHTML=lista_selecionada
 
-    pesquisa.placeholder="Insira nome do produto"
+    pesquisa.placeholder="Pesquise nome do produto"
 
     botao_footer.href='/HTML/novo_produto.html'
     legenda_botao_footer.innerHTML='Adicionar Produto'
@@ -81,6 +72,9 @@ function telaProdutos(){
         const link_produto=document.createElement('a')
         scroll.appendChild(link_produto)
         link_produto.classList.add('produto')
+        link_produto.addEventListener('click',()=>{
+            enviarAtividade(produto)
+        })
         
         const titulo_produto=document.createElement('h3')
         link_produto.appendChild(document.createElement('span').appendChild(titulo_produto))
