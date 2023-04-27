@@ -60,11 +60,12 @@ class Usuario{
     }
 }
 class Produto{
-    constructor(nome,equipamento,tempo_esperado){
+    constructor(nome,equipamento,tempo_esperado,descricao=""){
         this.nome=nome
         this.equipamento=equipamento
         this.tempo_esperado=tempo_esperado
         this.estoque=0
+        this.descricao=descricao
     }
     adicionarEstoque(quantidade){
         this.estoque+=quantidade

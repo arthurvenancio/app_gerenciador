@@ -61,3 +61,10 @@
     font-size: 0.75em;
     font-style: italic;
 }
+
+.espaco_titulo{
+    display: flex;
+    width: 60vw;
+    justify-content: space-between;
+    align-items: center;
+}

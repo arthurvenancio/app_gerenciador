@@ -1,5 +1,4 @@
 const equipamento = JSON.parse(localStorage.getItem('objeto'));
-console.log(equipamento.componentes)
 
 const elementos = document.querySelectorAll('[data-info]')
 

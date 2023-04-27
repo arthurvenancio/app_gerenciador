@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/equipamento.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="/Imagens/Logo_Gerenciador_Sem_Fundo.png">
+    <title>Gerenciador - Produto</title>
+</head>
+<body>
+    <header>
+        <div class="grupo_titulo_header">
+            <a href="/HTML/lista_cadastrada.html?lista=Produtos" class="voltar">
+                <span class="material-symbols-outlined">
+                arrow_back_ios
+                </span>
+            </a>
+            <h1 class="titulo_header">Produto</h1>
+        </div>
+        <button class="log_off" onclick="window.location.href='../index.html'">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+    </header>
+    <main class="sem_footer central">
+        <div class="espaco_titulo">
+            <span>
+                <h2 data-info="nome"></h2>
+            </span>
+            <div class="central">
+                <h2 class="manutencoes_componentes" data-info="estoque"></h2>
+                <h3 class="legenda_manutencoes_componentes">Unidades</h3>
+            </div>
+        </div>
+        <div class="espaco_titulo">
+            <span>
+                <h3>Feito em:</h3>
+            </span>
+            <div class="central">
+                <h3 style="color: var(--branco-escuro);"><em data-info="equipamento"></em></h3>
+            </div>
+        </div>
+        <h3 class="central_a_esquerda" style="margin-top: 0.5em;margin-bottom: 0.5em;">Descrição do Produto:</h3>
+        <p class="central_a_esquerda" style="text-align: justify;" data-info="descricao"></p>
+    </main>
+    <script src="/Javascript/produto.js" type="module"></script>
+</body>
+</html>
