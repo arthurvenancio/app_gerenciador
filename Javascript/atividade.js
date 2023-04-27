@@ -1,16 +1,20 @@
 import { classes } from "./classes.js";
-
+const objeto_atividade = JSON.parse(localStorage.getItem('objeto'));
+console.log(objeto_atividade)
+let atividade
 //Começo de coisas para teste
 const parametros = new URLSearchParams(window.location.search);
 const tipo_atividade = parametros.get('tipoAtividade');
 
-const textoLorem='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sed turpis tincidunt id aliquet. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Cursus vitae congue mauris rhoncus. Arcu dictum varius duis at consectetur lorem donec massa. Lorem ipsum dolor sit amet consectetur. Sem fringilla ut morbi tincidunt augue interdum velit euismod.'
-let atividade
+
 
 if(tipo_atividade=='manutencao'){
-    atividade = new classes.manutencao(60,'Equipamento 1','Componente 10',textoLorem)
+    const equipamento=objeto_atividade.titulo.split(' ')[2]
+    const componente=objeto_atividade.titulo.split(' ')[4]
+    atividade = new classes.manutencao(objeto_atividade.tempo_estimado,equipamento,componente,objeto_atividade.descricao)
 } else{
-    atividade = new classes.producao(60,'Produto Teste',1,'Equipamento Teste')
+    const produto=objeto_atividade.titulo.split(" ")[2]
+    atividade = new classes.producao(objeto_atividade.tempo_estimado,produto,objeto_atividade.quantidade,objeto_atividade.local)
 }
 //fim de coisas para teste
 
