@@ -11,21 +11,26 @@
     <title>Gerenciador - Login</title>
 </head>
 <body>
-    <main>
-        <h1>Gerenciador de Produção e Manutenção</h1>
-        <form action="">
+    <main class="sem_footer">
+        <h1 class="central_a_esquerda">Gerenciador de Produção e Manutenção</h1>
+        <form action="" class="central">
             <label class="cadastro">
                 <h3>Faça seu Login</h3>
-                <input type="text" class="input_cadastro" placeholder="usuario@email.com" required>
-                <input type="password" class="input_cadastro" placeholder="*****" required>
+                <input type="email" class="input_cadastro" placeholder="usuario@email.com" id="usuario" required>
+                <span class="alerta" id="alerta_usuario"></span>
+            </label>
+            <label class="cadastro">
+                <input type="password" class="input_cadastro" placeholder="*****" id="senha" required>
+                <span class="alerta" id="alerta_senha"></span>
             </label>
             <div class="login_div">
-                <button class="botoes botao_2" onclick="window.location.href='/HTML/novo_usuario.html'">Cadastre-se</button>
-                <button class="botoes botao_1" type="submit" >Entrar</button>
+                <button class="botoes botao_1" type="submit" style="max-width: 40%;">Entrar</button>
+                <button class="botoes botao_2" onclick="window.location.href='/HTML/novo_usuario.html'" style="max-width: 40%;">Cadastre-se</button>
             </div>
         </form>
         
         
     </main>
+    <script src="/Javascript/validacao.js"></script>
 </body>
 </html>

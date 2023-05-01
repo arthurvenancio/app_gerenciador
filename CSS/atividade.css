@@ -19,12 +19,6 @@
 .botao_contador span{
     font-size: 2.5em;
 }
-.alerta{
-    color: var(--vermelho);
-    margin-top: 0;
-    font-style: italic;
-    display: none;
-}
 
 
 .descricao{
