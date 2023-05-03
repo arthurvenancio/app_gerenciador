@@ -1,4 +1,6 @@
 import { classes } from './classes.js'
+fetch('http://localhost:3000/usuario_selecionado').then(res=>res.json()).then(usuario=>document.querySelector('.titulo_header').innerHTML=usuario.empresa)
+
 
 function enviarAtividade(atividade) {
     const objeto=JSON.stringify(atividade)

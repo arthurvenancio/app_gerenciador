@@ -5,6 +5,10 @@ const mensagem_valueMissing={
     email:'Email não preenchido',
     password:'Senha não preenchida',
 }
+const mensagem_customError={
+    email:'',
+    password:'Usuário ou Senha incorreta'
+}
 
 function validacaoInput(input){
     const obj_validacao=input.validity
@@ -19,7 +23,6 @@ function validacaoInput(input){
     if(!obj_validacao.valid){
         for (const erro in obj_validacao ){
             if(obj_validacao[erro]){
-                console.log(erro)
                 tipo_erro=erro
                 break
             }
@@ -53,7 +56,7 @@ function estiloValido(input){
     input.style.borderColor='var(--azul-claro)'
 }
 
-function validacao(){
+export function validacao(){
     document.querySelectorAll('.input_cadastro').forEach(input=>{
         input.addEventListener('blur',()=>{validacaoInput(input)})
     })
@@ -63,7 +66,7 @@ function validacao(){
         })
     })
 }
-validacao()
+
 
 
 /*
