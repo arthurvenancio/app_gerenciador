@@ -1,4 +1,5 @@
 
+
 const usuarios_cadastrados=[{
     usuario:'teste@email.com',
     senha:'teste',
@@ -8,7 +9,7 @@ const usuarios_cadastrados=[{
     senha:'teste',
     empresa:'Teste 2 LTDA'
   }]
- // const usuarios_cadastrados=JSON.stringify(usuarios)
+
 
 const db={
     usuarios_cadastrados,

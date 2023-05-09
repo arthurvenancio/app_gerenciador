@@ -4,6 +4,7 @@ const mensagem_typeMismatch={
 const mensagem_valueMissing={
     email:'Email não preenchido',
     password:'Senha não preenchida',
+    text:'Campo não preenchido',
 }
 const mensagem_customError={
     email:'',

@@ -20,27 +20,32 @@
             <h1 class="titulo_header">Novo Usuário</h1>
         </div>
     </header>
-    <main>
+    <main class="sem_footer">
         <form action="" class="central">
             <label class="cadastro">
                 <h3>Nome da Empresa</h3>
-                <input type="text" class="input_cadastro" placeholder="XXXX Inc." required>
+                <input type="text" class="input_cadastro" placeholder="XXXX Inc." id="nome" required>
+                <span class="alerta" id="alerta_nome"></span>
             </label>
             <label class="cadastro">
                 <h3>Email</h3>
-                <input type="email" class="input_cadastro" placeholder="usuario@email.com" required>
+                <input type="email" class="input_cadastro" placeholder="usuario@email.com" id="email" required>
+                <span class="alerta" id="alerta_email"></span>
             </label>
             <label class="cadastro">
                 <h3>Crie uma Senha</h3>
-                <input type="password" class="input_cadastro" placeholder="*****" required>
+                <input type="password" class="input_cadastro" placeholder="*****" id="senha" required>
+                <span class="alerta" id="alerta_senha"></span>
             </label>
             <label class="cadastro">
                 <h3>Confirme sua Senha</h3>
-                <input type="password" class="input_cadastro" placeholder="*****" required>
+                <input type="password" class="input_cadastro" placeholder="*****" id="confirma_senha" required>
+                <span class="alerta" id="alerta_confirma_senha"></span>
             </label>
-            <button class="botoes botao_1 central botao_unico" type="submit" onclick="window.location.href='../index.html'">Cadastrar</button>
+            <button class="botoes botao_1 central botao_unico" type="submit" >Cadastrar</button>
         </form>
         
     </main>
+    <script src="/Javascript/novo_usuario.js" type="module"></script>
 </body>
 </html>

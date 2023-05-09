@@ -4,13 +4,8 @@ validacao()
 
 document.querySelector('button[type="submit"]').addEventListener('click',(event)=>{
   event.preventDefault()
-  const alerta=document.querySelector('#alerta_senha')
-    alerta.innerHTML='Carregando'
-    alerta.style.display='block'
   login()
 })
-
-
 
 async function login(){
 
