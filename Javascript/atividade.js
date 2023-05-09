@@ -1,22 +1,21 @@
-import { classes } from "./classes.js";
-const objeto_atividade = JSON.parse(localStorage.getItem('objeto'));
-console.log(objeto_atividade)
-let atividade
-//Começo de coisas para teste
-const parametros = new URLSearchParams(window.location.search);
-const tipo_atividade = parametros.get('tipoAtividade');
+import { classes } from "./classes.mjs";
+import db from "../Servidor/db.mjs";
 
+async function atividade_selecionada(){
+    const resposta = await fetch('http://localhost:3000/atividade_selecionada')
+    const objeto_atividade=await resposta.json()
 
+    const parametros = new URLSearchParams(window.location.search);
+    const tipo_atividade = parametros.get('tipoAtividade');
 
-if(tipo_atividade=='manutencao'){
-    const equipamento=objeto_atividade.titulo.split(' ')[2]
-    const componente=objeto_atividade.titulo.split(' ')[4]
-    atividade = new classes.manutencao(objeto_atividade.tempo_estimado,equipamento,componente,objeto_atividade.descricao)
-} else{
-    const produto=objeto_atividade.titulo.split(" ")[2]
-    atividade = new classes.producao(objeto_atividade.tempo_estimado,produto,objeto_atividade.quantidade,objeto_atividade.local)
+    
+    if(tipo_atividade=='manutencao'){
+        return db.reinstanciar(new classes.manutencao(),objeto_atividade)
+    } else{
+        return db.reinstanciar(new classes.producao(),objeto_atividade)
+    }
 }
-//fim de coisas para teste
+
 
 function mostrarAEsconderB(tipo){
     const elementos=document.querySelectorAll('[data-tipoAtividade]')
@@ -101,7 +100,9 @@ function telaProducao(atividade){
 
 }
 
-window.addEventListener('load',()=>{
+window.addEventListener('load',async()=>{
+    const atividade = await atividade_selecionada()
+    console.log(atividade)
     if(atividade.tipo=='manutencao'){
         telaManutencao(atividade)
     }

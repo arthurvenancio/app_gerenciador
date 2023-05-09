@@ -1,12 +1,12 @@
-const express = require('express');
+import express, { json } from 'express';
 const app = express()
-app.use(express.json())
+app.use(json())
 
 const PORT = 3000;
 
-const cors = require('cors');
+import cors from 'cors';
 app.use(cors());
-const db=require('../Servidor/db.js')
+import db from './db.mjs'
 
 let usuario_selecionado=null
 
@@ -19,7 +19,7 @@ app.post('/login', (req, res) => {
   });
 
   if (usuario) {
-    usuario_selecionado = usuario;
+    usuario_selecionado = {empresa:usuario.empresa,usuario:usuario.usuario};
     res.send({login:true});
   } else {
     res.send({login:false});
@@ -39,6 +39,7 @@ app.post('/cadastro_usuario',(req,res)=>{
 
   if(!usuario_existente){
     db.usuarios_cadastrados.push(novo_usuario)
+    db.atividade_cadastradas.push({usuario:novo_usuario.usuario,atividades:[]})
     res.sendStatus(201)
   } else{
     res.send({erro:'Usuário já cadastrado'})
@@ -46,6 +47,31 @@ app.post('/cadastro_usuario',(req,res)=>{
   }
 
 })
+
+let atividade_selecionada=null
+//enviar atividade para seleção no hub
+app.post('/selecao_hub',(req,res)=>{
+  atividade_selecionada=JSON.parse(req.body)
+
+  for(let atividade_por_usuario of db.atividade_cadastradas){
+    if(atividade_por_usuario.usuario==usuario_selecionado){
+      for(let atividade of atividade_por_usuario.atividades){
+        const obj_atividade=JSON.parse(atividade)
+        if(obj_atividade.id==atividade_selecionada.id){
+          Object.assign(obj_atividade,atividade_selecionada)
+          res.sendStatus(201)
+          break
+        }
+      }
+    }
+  }
+  
+})
+//Pegar atividade selecionada
+app.get('/atividade_selecionada',(req,res)=>{
+  res.json(atividade_selecionada)
+})
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

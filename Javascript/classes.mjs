@@ -9,6 +9,8 @@ class Atividade{
         this.id=this.criacao+""+Math.random()
         this.pausas_totais=0
         this.inicio_pausa=0
+        this.inicio_tarefa=null
+        this.final_tarefa=null
     }
     atraso(){
         if(this.duracao_real>this.tempo_estimado){
@@ -34,16 +36,15 @@ class Atividade{
 }
 
 class Manutencao extends Atividade{
-    constructor(tempo_estimado,equipamento,componente,descricao){
+    constructor(tempo_estimado=null,equipamento=null,componente=null,descricao=null){
         super(tempo_estimado)
         this.titulo=`Manutenção - ${equipamento} | ${componente}`
         this.descricao=String(descricao)
         this.tipo='manutencao'
     }
-    
 }
 class Producao extends Atividade{
-    constructor(tempo_estimado,produto,quantidade,local){
+    constructor(tempo_estimado=null,produto=null,quantidade=null,local=null){
         super(tempo_estimado)
         this.titulo=`Produção - ${produto}`
         this.quantidade=String(quantidade)
@@ -52,15 +53,8 @@ class Producao extends Atividade{
         this.produzidos=0
     }
 }
-class Usuario{
-    constructor(email,senha,empresa){
-        this.email=email
-        this.senha=senha
-        this.empresa=empresa
-    }
-}
 class Produto{
-    constructor(nome,equipamento,tempo_esperado,descricao=""){
+    constructor(nome=null,equipamento=null,tempo_esperado=null,descricao=""){
         this.nome=nome
         this.equipamento=equipamento
         this.tempo_esperado=tempo_esperado
@@ -75,7 +69,7 @@ class Produto{
     }
 }
 class Equipamento{
-    constructor(tag,nome,data_compra,valor_compra,capacidade,oee_esperado,tempo_setup,tempo_limpeza){
+    constructor(tag=null,nome=null,data_compra=null,valor_compra=null,capacidade=null,oee_esperado=null,tempo_setup=null,tempo_limpeza=null){
         this.tag=tag
         this.nome=nome
         this.data_compra=data_compra
@@ -111,7 +105,6 @@ class Equipamento{
 export const classes={
     manutencao:Manutencao,
     producao:Producao,
-    usuario:Usuario,
     produto:Produto,
     equipamento:Equipamento,
 }

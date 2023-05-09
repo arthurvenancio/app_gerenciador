@@ -2,6 +2,7 @@
   "name": "servidor",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "crud_service.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

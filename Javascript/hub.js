@@ -1,14 +1,87 @@
-import { classes } from './classes.js'
-fetch('http://localhost:3000/usuario_selecionado')
-    .then(res=>res.json())
-        .then(usuario=>document.querySelector('.titulo_header').innerHTML=usuario.empresa)
+import { classes } from './classes.mjs'
+import db from '../Servidor/db.mjs';
 
+let lista_atividades=[]
 
-function enviarAtividade(atividade) {
-    const objeto=JSON.stringify(atividade)
-    localStorage.setItem('objeto',objeto)
+async function carregarPagina(lista_atividades) {
+    const response = await fetch('http://localhost:3000/usuario_selecionado');
+    const usuario = await response.json();
+    document.querySelector('.titulo_header').innerHTML = usuario.empresa;
+    
+    for(let atividades_por_usuario of db.atividade_cadastradas){
+        if(atividades_por_usuario.usuario==usuario.usuario){
+            atividades_por_usuario.atividades.forEach(atividade=>{
+                const obj=JSON.parse(atividade)
+                switch(obj.tipo){
+                    case 'producao':
+                        const producao=new classes.producao()
+                        db.reinstanciar(producao,obj)
+                        lista_atividades.push(producao)
+                        
+                        break
+                    case 'manutencao':
+                        const manutencao=new classes.manutencao()
+                        db.reinstanciar(manutencao,obj)
+                        lista_atividades.push(manutencao)
+                        break
+                }
+            })
+        }
+    }
+    lista_atividades.forEach((atividade)=>{
+
+        adicionar_atividade(atividade)
+        
+        //somando backlog
+        if(atividade.tipo==='producao'){
+            tempo_backlog_producao+=(atividade.tempo_estimado)/(60*60)
+        }if(atividade.tipo==='manutencao'){
+            tempo_backlog_manutencao+=(atividade.tempo_estimado)/(60*60)
+        }
+        
+            const id="'"+atividade.id+"'"
+            const elemento_por_id=document.querySelector(`[data-id=${id}]`)
+            
+            const botao=elemento_por_id.children[1]
+            const icone=botao.children[0]
+            
+            botao.addEventListener('click',()=>{
+                //Iniciar a tarefa pela primeira vez
+                if(atividade.status==='Planejado'){
+                    atividade.iniciado()
+                    botao.style.backgroundColor='var(--amarelo)'
+                    icone.innerHTML='pause_circle'
+                    elemento_por_id.dataset.status=atividade.status
+                } 
+                //Pausar a tarefa
+                else if(atividade.status==="Em andamento"){
+                    atividade.parar()
+                    botao.style.backgroundColor='var(--azul-claro)'
+                    icone.innerHTML='play_circle'
+                    elemento_por_id.dataset.status=atividade.status
+                }
+                //Continuar a tarefa
+                else if(atividade.status==="Pausado"){
+                    atividade.continuar()
+                    botao.style.backgroundColor='var(--amarelo)'
+                    icone.innerHTML='pause_circle'
+                    elemento_por_id.dataset.status=atividade.status
+                }
+            })     
+            //Escrita do backlog na tela          
+            escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
+            escritaDeTempo(tempo_backlog_producao,backlog_producao)
+             
+    })
   }
-
+function enviarAtividade(atividade) {
+    const atividade_json=JSON.stringify(atividade)
+    fetch('http://localhost:3000/selecao_hub',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:atividade_json
+    })
+  }
 function adicionar_atividade(atividade){
     //Criando div da atividade
     const div_elemento=document.createElement('div')
@@ -69,13 +142,6 @@ function adicionar_atividade(atividade){
     status.innerHTML=atividade.status
 
 }
-const textoLorem='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sed turpis tincidunt id aliquet. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Cursus vitae congue mauris rhoncus. Arcu dictum varius duis at consectetur lorem donec massa. Lorem ipsum dolor sit amet consectetur. Sem fringilla ut morbi tincidunt augue interdum velit euismod.'
-
-
-let lista_atividades=[]
-const manutencaoInst=new classes.manutencao(60,'Equipamento 1','Componente 10',textoLorem)
-const producaoInst=new classes.producao(60,'Produto Teste',1,'Equipamento 1')
-lista_atividades.push(manutencaoInst,producaoInst)
 
 
 let tempo_backlog_producao=0
@@ -95,51 +161,10 @@ function escritaDeTempo(tempo,elemento){
 }
 
 window.addEventListener('load',()=>{
-    lista_atividades.forEach((atividade)=>{
+    
+    carregarPagina(lista_atividades)
 
-        adicionar_atividade(atividade)
-        
-        //somando backlog
-        if(atividade.tipo==='producao'){
-            tempo_backlog_producao+=(atividade.tempo_estimado)/(60*60)
-        }if(atividade.tipo==='manutencao'){
-            tempo_backlog_manutencao+=(atividade.tempo_estimado)/(60*60)
-        }
-        
-            const id="'"+atividade.id+"'"
-            const elemento_por_id=document.querySelector(`[data-id=${id}]`)
-            
-            const botao=elemento_por_id.children[1]
-            const icone=botao.children[0]
-            
-            botao.addEventListener('click',()=>{
-                //Iniciar a tarefa pela primeira vez
-                if(atividade.status==='Planejado'){
-                    atividade.iniciado()
-                    botao.style.backgroundColor='var(--amarelo)'
-                    icone.innerHTML='pause_circle'
-                    elemento_por_id.dataset.status=atividade.status
-                } 
-                //Pausar a tarefa
-                else if(atividade.status==="Em andamento"){
-                    atividade.parar()
-                    botao.style.backgroundColor='var(--azul-claro)'
-                    icone.innerHTML='play_circle'
-                    elemento_por_id.dataset.status=atividade.status
-                }
-                //Continuar a tarefa
-                else if(atividade.status==="Pausado"){
-                    atividade.continuar()
-                    botao.style.backgroundColor='var(--amarelo)'
-                    icone.innerHTML='pause_circle'
-                    elemento_por_id.dataset.status=atividade.status
-                }
-            })     
-            //Escrita do backlog na tela          
-            escritaDeTempo(tempo_backlog_manutencao,backlog_manutencao)
-            escritaDeTempo(tempo_backlog_producao,backlog_producao)
-             
-    })
+    
 })
 
 function atualizar_tempo(lista){
