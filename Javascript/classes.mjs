@@ -1,3 +1,4 @@
+
 class Atividade{
     constructor(tempo_estimado){
         this.tempo_estimado=parseInt(tempo_estimado);
@@ -6,7 +7,7 @@ class Atividade{
         this.duracao_real=0;
         this.status="Planejado";
         this.criacao=Date.now();
-        this.id=this.criacao+""+Math.random()
+        this.id=this.criacao+""+Math.random().toFixed(2)
         this.pausas_totais=0
         this.inicio_pausa=0
         this.inicio_tarefa=null

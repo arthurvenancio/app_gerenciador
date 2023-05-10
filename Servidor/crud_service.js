@@ -1,3 +1,4 @@
+
 import express, { json } from 'express';
 const app = express()
 app.use(json())
@@ -52,11 +53,14 @@ let atividade_selecionada=null
 //enviar atividade para seleção no hub
 app.post('/selecao_hub',(req,res)=>{
   atividade_selecionada=req.body
-/*
+
   for(let atividade_por_usuario of db.atividade_cadastradas){
-    if(atividade_por_usuario.usuario==usuario_selecionado){
+    if(atividade_por_usuario.usuario==usuario_selecionado.usuario){
       for(let atividade of atividade_por_usuario.atividades){
         const obj_atividade=JSON.parse(atividade)
+
+        console.log(obj_atividade.id,atividade_selecionada.id)
+        
         if(obj_atividade.id==atividade_selecionada.id){
           Object.assign(atividade_selecionada,obj_atividade)
           res.sendStatus(201)
@@ -65,7 +69,7 @@ app.post('/selecao_hub',(req,res)=>{
       }
     }
   }
-  */
+
 })
 //Pegar atividade selecionada
 app.get('/atividade_selecionada',(req,res)=>{
@@ -76,6 +80,8 @@ app.get('/atividade_selecionada',(req,res)=>{
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+
 
 
 //Função de enviar email

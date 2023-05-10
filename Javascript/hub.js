@@ -7,27 +7,34 @@ async function carregarPagina(lista_atividades) {
     const response = await fetch('http://localhost:3000/usuario_selecionado');
     const usuario = await response.json();
     document.querySelector('.titulo_header').innerHTML = usuario.empresa;
-    
+    //let bagaca_por_usuario=null
     for(let atividades_por_usuario of db.atividade_cadastradas){
         if(atividades_por_usuario.usuario==usuario.usuario){
+            //bagaca_por_usuario=atividades_por_usuario.atividades
+            
             atividades_por_usuario.atividades.forEach(atividade=>{
+                
                 const obj=JSON.parse(atividade)
+                console.log(obj.id)
                 switch(obj.tipo){
                     case 'producao':
                         const producao=new classes.producao()
-                        db.reinstanciar(producao,obj)
+                        Object.assign(producao,obj)
                         lista_atividades.push(producao)
+                        
                         
                         break
                     case 'manutencao':
                         const manutencao=new classes.manutencao()
-                        db.reinstanciar(manutencao,obj)
+                        Object.assign(manutencao,obj)
                         lista_atividades.push(manutencao)
                         break
                 }
             })
         }
     }
+    //console.log(bagaca_por_usuario)
+
     lista_atividades.forEach((atividade)=>{
 
         adicionar_atividade(atividade)

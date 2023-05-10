@@ -2,13 +2,27 @@ import { classes } from "./classes.mjs";
 import db from "../Servidor/db.mjs";
 
 async function atividade_selecionada(){
-    const resposta = await fetch('http://localhost:3000/atividade_selecionada')
-    const objeto_atividade=await resposta.json()
+    const resposta_atividade = await fetch('http://localhost:3000/atividade_selecionada')
+    const objeto_atividade=await resposta_atividade.json()
+
+    const resposta_usuario = await fetch('http://localhost:3000/usuario_selecionado')
+    const objeto_usuario=await resposta_usuario.json()
 
     const parametros = new URLSearchParams(window.location.search);
     const tipo_atividade = parametros.get('tipoAtividade');
     
-    console.log(objeto_atividade)
+    for(let user of db.atividade_cadastradas){
+        if(user.usuario==objeto_usuario.usuario){
+            for(let atividade of user.atividades){
+                const atividade_obj=JSON.parse(atividade)
+                console.log(atividade_obj,objeto_atividade,atividade_obj.id==objeto_atividade.id)
+                if(atividade_obj.id==objeto_atividade.id){
+                    console.log(atividade)
+                }
+            }
+        }
+    }
+
     
     if(tipo_atividade=='manutencao'){
         const inst_man=new classes.manutencao()
@@ -104,7 +118,7 @@ function telaProducao(atividade){
 
 window.addEventListener('load',async()=>{
     const atividade = await atividade_selecionada()
-    console.log(atividade)
+
     if(atividade.tipo=='manutencao'){
         telaManutencao(atividade)
     }
