@@ -51,21 +51,21 @@ app.post('/cadastro_usuario',(req,res)=>{
 let atividade_selecionada=null
 //enviar atividade para seleção no hub
 app.post('/selecao_hub',(req,res)=>{
-  atividade_selecionada=JSON.parse(req.body)
-
+  atividade_selecionada=req.body
+/*
   for(let atividade_por_usuario of db.atividade_cadastradas){
     if(atividade_por_usuario.usuario==usuario_selecionado){
       for(let atividade of atividade_por_usuario.atividades){
         const obj_atividade=JSON.parse(atividade)
         if(obj_atividade.id==atividade_selecionada.id){
-          Object.assign(obj_atividade,atividade_selecionada)
+          Object.assign(atividade_selecionada,obj_atividade)
           res.sendStatus(201)
           break
         }
       }
     }
   }
-  
+  */
 })
 //Pegar atividade selecionada
 app.get('/atividade_selecionada',(req,res)=>{

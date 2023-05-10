@@ -7,12 +7,14 @@ async function atividade_selecionada(){
 
     const parametros = new URLSearchParams(window.location.search);
     const tipo_atividade = parametros.get('tipoAtividade');
-
+    
+    console.log(objeto_atividade)
     
     if(tipo_atividade=='manutencao'){
-        return db.reinstanciar(new classes.manutencao(),objeto_atividade)
+        const inst_man=new classes.manutencao()
+        return Object.assign(inst_man,objeto_atividade)
     } else{
-        return db.reinstanciar(new classes.producao(),objeto_atividade)
+        return Object.assign(new classes.producao(),objeto_atividade)
     }
 }
 
